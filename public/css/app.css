@@ -10,12 +10,6 @@
     font-family: 'Cinzel', serif;
 
  }
- 
-/* body {
-     background-image: url("../img/man-sitting.jpg");
-     background-size: cover;
-     font-family: 'Cinzel', serif;
- }*/
 
 #app {
     height:100vh;
@@ -29,8 +23,7 @@
 }
 
  #navs{     
-     background-color: #3d4049;
-     margin-top: 60px;
+     background-color: #3d4049;     
  }
 
  #navs a {
@@ -54,6 +47,28 @@
      margin-top: 150px;
      background-color: #f2aa4d;
      width:100%;
-     border: solid 1px;
+     border-top: solid 1px;
+     border-bottom: solid 1px;
+     text-align:center;
+ }
+ 
+ .panel{
+     background-color: whitesmoke;
+     border-radius:10px;
+     border:solid  1px whitesmoke;
+     width: 40%;
+     margin:auto;
+ }
+ 
+ #navButtons{
+     float:right;
+     display:block;
+ }
+ 
+ #homeBoxes{
+     height:200px;
+     margin-top: 150px;
+     background-color: whitesmoke;
+     width:100%;     
      text-align:center;
  }

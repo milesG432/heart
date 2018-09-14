@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Heat Systems</title>
+    <title>Heart Systems</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>    
@@ -28,7 +28,7 @@
 <body>    
     <div id="app" class="parallax-window" data-parallax="scroll" data-image-src="img/man-sitting.jpg">        
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel" id='navs'>
-            <div class="container">
+            <div class="container-fluid">
                 <nav class="navbar" id='navImage'>
                     <a href='/'><img src="img/logo.png" alt=""/></a>
                 </nav>
@@ -87,6 +87,14 @@
                             </li>
                         @endguest
                     </ul>
+                    <div style="float:right">
+                    <ul class="nav">
+                        <li class="nav-item"><button id='linkButton'>TeamViewer</button></li>                        
+                    </ul>                    
+                    <ul class="nav">
+                        <li class="nav-item"><button id='linkButton'>01568 617600</button></li>
+                    </ul>
+                    </div>
                 </div>
             </div>
         </nav>
