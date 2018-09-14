@@ -19,6 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/tree', function(){
-    return view('home');
+Route::get('/pulseoffice', function(){
+    return view('pulseoffice');
+});
+
+Route::get('/pulsestore', function(){
+    return view('pulsestore');
+});
+
+Route::get('/support', function(){
+    return view('support');
+});
+
+Route::get('/news', function(){
+    return view('news');
 });

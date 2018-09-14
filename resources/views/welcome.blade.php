@@ -1,70 +1,20 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
+@section('content')
+<br><br>
+<div id='intro' class='shadow-lg p-3 mb-5 bg-white rounded'>
+    <h2 id='headtext'>Run your business your way</h2>    
+    <h5>Proven. Simple. Flexible. Affordable</h5><br>
+    <p>Heart Systems are the leading supplier of softward for small and medium sized Office Supplies companies in the UK and Ireland</p>
+    <div id='linkButton' ><a href='/pulseoffice'>Find out more</a></div>
+</div>
 
-        <title>Heart Systems</title>
+<div id="homeContent">
+    <br><br><br>
+    <h2>Software for your office supplies business</h2>
+    <p>Manage your sales, ordering and invoicing with Pulse by Heart Systems.</p>
+</div>
+@endsection
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-    <!--https://blackrockdigital.github.io/startbootstrap-business-casual/index.html-->
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-                background-image: url(../../public/img/home-office-336373_960_720.jpg);
-            }
+    
+    <!--https://blackrockdigital.github.io/startbootstrap-business-casual/index.html-->   
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>    
-    <body>        
-        
-    </body>
-</html>
