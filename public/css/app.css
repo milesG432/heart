@@ -109,7 +109,7 @@ footer a:hover{
  }
  
 footer{
-    height: 250px;
+    height: 450px;
     background-color: #3D4049;
  }
  
@@ -128,5 +128,10 @@ footer{
  
  footer hr {     
      border: 1px solid #f2aa4d;
+ }
+ 
+ #footerAddress{
+     font-size: 8px;
+     color: whitesmoke;
  }
  
