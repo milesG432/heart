@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>    
-    <div id="app" class="parallax-window" data-parallax="scroll" data-image-src="img/man-sitting.jpg">        
+    <div id="app" class="parallax-window" data-parallax="scroll" data-image-src="img/laptop.jpg">        
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel" id='navs'>
             <div class="container-fluid">
                 <nav class="navbar" id='navImage'>
@@ -102,6 +102,45 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+        <footer>  
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <ul id='footerList'>
+                            <strong><p style="color: #f2aa4d;text-align: left;">Links</p></strong>
+                            <li>
+                                <a href='#'>Home</a>
+                            </li>
+                            <li>
+                                <a href='#'>About</a>
+                            </li>
+                            <li>
+                                <a href='#'>Contact us</a>
+                            </li>
+                            <li>
+                                <a href='#'>Careers</a>
+                            </li>
+                            <li>
+                                <a href='#'>Support</a>
+                            </li>
+                            <li>
+                                <a href='#'>News</a>
+                            </li>
+                        </ul> 
+                    </div>                
+                    <div class="col-sm">
+                        qq
+                    </div>            
+                    <div class="col-sm">
+                        qq
+                    </div>            
+                    <div class="col-sm">
+                        qq
+                    </div>            
+                </div>
+            </div>
+            
+        </footer>
+    </div>    
 </body>
 </html>

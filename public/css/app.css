@@ -72,3 +72,46 @@
      width:100%;     
      text-align:center;
  }
+
+ #homeContent{
+     opacity: 0.95;
+ }
+ 
+ #homeBoxContainer{
+     margin-top: 250px;
+ }
+ 
+ #homeBox{
+     height:250px;
+     opacity: 0.95;
+     border-radius: 7px;
+     text-align: center;
+     color:whitesmoke;
+ }
+ 
+ 
+ 
+ #homeBoxImage{
+     border:none;
+     display: block;
+     margin: 0 auto;
+     margin-top: 50px;
+ }
+ 
+footer{
+    height: 250px;
+    background-color: #3D4049;
+ }
+
+ #footerList {
+    list-style:none;
+    text-align:left;
+ }
+ 
+ #footerList li a {
+     color:#f2aa4d;
+ }
+ 
+ #footerList li a:hover{
+     color:#3d4049;
+ }
