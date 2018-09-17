@@ -103,11 +103,12 @@
             @yield('content')
         </main>
         <footer>  
-            <div class="container">
+            <div class="container"><br>
                 <div class="row">
                     <div class="col-sm">
                         <ul id='footerList'>
-                            <strong><p style="color: #f2aa4d;text-align: left;">Links</p></strong>
+                            <strong><p style="color: #ffffff;text-align: left;">LINKS</p></strong>
+                            <hr>
                             <li>
                                 <a href='#'>Home</a>
                             </li>
@@ -129,7 +130,12 @@
                         </ul> 
                     </div>                
                     <div class="col-sm">
-                        qq
+                        <strong><p style="color: #ffffff;text-align: left;">CONTACT US</p></strong>
+                        <hr>
+                        <strong><p style="color: #ffffff;text-align: left;">MAIN NO.   01568617600</p></strong>
+                        <strong><p style="color: #ffffff;text-align: left;">SALES NO.   01568 617611</p></strong>
+                        <a href="mailto:support@heartsystems.co.uk">support@heartsystems.co.uk</a>
+                        <a href='mailto:sales@heartsystems.co.uk'>sales@heartsystems.co.uk</a>
                     </div>            
                     <div class="col-sm">
                         qq

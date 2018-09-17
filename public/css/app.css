@@ -15,6 +15,16 @@
     height:100vh;
 }
 
+footer a {
+    color:#f2aa4d;
+    text-decoration:none;
+}
+
+footer a:hover{
+    color:whitesmoke;
+    text-decoration:none;
+}
+
 #intro{    
     background-color: whitesmoke;
     opacity: 0.95;
@@ -102,7 +112,7 @@ footer{
     height: 250px;
     background-color: #3D4049;
  }
-
+ 
  #footerList {
     list-style:none;
     text-align:left;
@@ -113,5 +123,10 @@ footer{
  }
  
  #footerList li a:hover{
-     color:#3d4049;
+     color:whitesmoke;
  }
+ 
+ footer hr {     
+     border: 1px solid #f2aa4d;
+ }
+ 
