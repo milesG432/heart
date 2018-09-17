@@ -143,8 +143,9 @@
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2444.446788686343!2d-2.7317736840091698!3d52.21710006638468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870471a0c30012f%3A0x58cab1e73e2d876c!2sHeart+Systems+Ltd!5e0!3m2!1sen!2suk!4v1537192116031" width="450" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>                        
                 </div>
-            </div>
-            
+                <p style="color:#F2AA4D">2018&COPY; Heart Systems Ltd (all rights reserved)</p>
+                <p style="color:#F2AA4D"><a href='#'>Privacy & cookies</a> | <a href='#'>Company information</a></p>
+            </div>            
         </footer>
     </div>    
 </body>
