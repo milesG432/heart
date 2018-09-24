@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>    
-    <div id="app" class="parallax-window" data-parallax="scroll" data-image-src="img/laptop.jpg">        
+    <div id="app">        
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel" id='navs'>
             <div class="container-fluid">
                 <nav class="navbar" id='navImage'>
@@ -99,7 +99,7 @@
             </div>
         </nav>
 
-        <main class="container-fluid">
+        <main>
             @yield('content')
         </main>
         <footer>  

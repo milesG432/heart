@@ -25,13 +25,6 @@ footer a:hover{
     text-decoration:none;
 }
 
-#intro{    
-    background-color: whitesmoke;
-    opacity: 0.95;
-    width: 30%;
-    margin: auto;
-}
-
  #navs{     
      background-color: #3d4049;     
  }
@@ -52,60 +45,9 @@ footer a:hover{
      text-decoration:none;
  }
 
- #homeContent {
-     height:200px;
-     margin-top: 150px;
-     background-color: #f2aa4d;
-     width:100%;
-     border-top: solid 1px;
-     border-bottom: solid 1px;
-     text-align:center;
- }
-
- .panel{
-     background-color: whitesmoke;
-     border-radius:10px;
-     border:solid  1px whitesmoke;
-     width: 40%;
-     margin:auto;
- }
-
  #navButtons{
      float:right;
      display:block;
- }
-
- #homeBoxes{
-     height:200px;
-     margin-top: 150px;
-     background-color: whitesmoke;
-     width:100%;     
-     text-align:center;
- }
-
- #homeContent{
-     opacity: 0.95;
- }
-
- #homeBoxContainer{
-     margin-top: 250px;
- }
-
- #homeBox{
-     height:250px;
-     opacity: 0.95;
-     border-radius: 7px;
-     text-align: center;
-     color:whitesmoke;
- }
-
-
-
- #homeBoxImage{
-     border:none;
-     display: block;
-     margin: 0 auto;
-     margin-top: 50px;
  }
 
 footer{
@@ -134,41 +76,147 @@ footer{
      font-size: 8px;
      color: whitesmoke;
  }
-
- @media only screen and (max-width: 1020px){
-     .panel-default{
-         width: auto;   
-         height:auto;
-         word-wrap:break-word;
-         display: block;
-        margin-left: auto;
-        margin-right: auto;
-     }
-     
-     .panel-body{
-         word-wrap:break-word;
-         width: auto;   
-         height:auto;
-         display: block;
-        margin-left: auto;
-        margin-right: auto;
-     }
-     #homeContent{
-         height: auto;
-         width:auto;
-         word-wrap:break-word;
-         display: block;
-         margin-left: auto;
-         margin-right: auto;
-     }
+ 
+ #topBlock{
+     height: 40em;
+     background-image: url("/img/apple-devices-books-business-572056.jpg");
  }
-/* @media only screen and (max-width: 1020px){
-     #homeContentPanel {
-         word-break:break;
-         height: auto;
-     }
-     #intro{
-         word-break:break;
-         height:auto;
-     }
- }*/
+ 
+ #topBlockContent{
+     margin-top:8em;
+     color:#3d4049;
+     background-color:whitesmoke;
+     border: 0.5px solid whitesmoke;
+     border-radius:7.5px;
+     opacity:0.9;
+     float:right;
+     width: 30%;
+ }
+ 
+ #topBlockContent2{
+     margin-top:18em;
+     color:#3d4049;
+     background-color:whitesmoke;
+     border: 0.5px solid whitesmoke;
+     border-radius:7.5px;
+     opacity:0.9;
+     float:left;
+     width: 30%;
+ }
+ 
+ #middleHome{
+     margin-top: 20px;
+     margin-bottom: 20px;
+ }
+ 
+.hexagon {
+  position: relative;
+  width: 250px; 
+  height: 144.34px;
+  background-color: #DA587D;
+  margin: 72.17px 0;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 72.17px solid #DA587D;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 72.17px solid #DA587D;
+}
+
+.hexagon2 {
+  position: relative;
+  width: 250px; 
+  height: 144.34px;
+  background-color: #8B6E95;
+  margin: 72.17px 0;
+}
+
+.hexagon2:before,
+.hexagon2:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+}
+
+.hexagon2:before {
+  bottom: 100%;
+  border-bottom: 72.17px solid #8B6E95;
+}
+
+.hexagon2:after {
+  top: 100%;
+  width: 0;
+  border-top: 72.17px solid #8B6E95;
+}
+
+.hexagon3 {
+  position: relative;
+  width: 250px; 
+  height: 144.34px;
+  background-color: #F2AA4D;
+  margin: 72.17px 0;
+}
+
+.hexagon3:before,
+.hexagon3:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+}
+
+.hexagon3:before {
+  bottom: 100%;
+  border-bottom: 72.17px solid #F2AA4D;
+}
+
+.hexagon3:after {
+  top: 100%;
+  width: 0;
+  border-top: 72.17px solid #F2AA4D;
+}
+
+.hexagon4 {
+  position: relative;
+  width: 250px; 
+  height: 144.34px;
+  background-color: #216A80;
+  margin: 72.17px 0;
+}
+
+.hexagon4:before,
+.hexagon4:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+}
+
+.hexagon4:before {
+  bottom: 100%;
+  border-bottom: 72.17px solid #216A80;
+}
+
+.hexagon4:after {
+  top: 100%;
+  width: 0;
+  border-top: 72.17px solid #216A80;
+}
