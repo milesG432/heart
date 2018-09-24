@@ -34,7 +34,7 @@
                 <div class="hexagon2" id="hex1">
                     <img src="/img/home-training.png" class="img-fluid " style="display: block;border:none;margin: 0 auto;">
                     <div class="mask flex-center rgba-purple-strong">
-                        <p class="white-text">Strong overlay</p>
+                        <p class="white-text">PulseOffice and PulseStore are so intuitive amd user friendly you will only need minimal training</p>
                     </div>
                     <p>MINIMAL TRAINING</p>
                 </div>    
@@ -46,7 +46,7 @@
                 <div class="hexagon3" id="hex1">
                     <img src="/img/home-disruption.png" class="img-fluid " style="display: block;border:none;margin: 0 auto;">
                     <div class="mask flex-center rgba-orange-strong">
-                        <p class="white-text">Strong overlay</p>
+                        <p class="white-text">Our experienced team will get you set up and working faster than you think</p>
                     </div>
                     <p>MINIMAL DISRUPTION</p>
                 </div>    
@@ -58,7 +58,7 @@
                 <div class="hexagon4" id="hex1">
                     <img src="/img/home-help.png" class="img-fluid " style="display: block;border:none;margin: 0 auto;">
                     <div class="mask flex-center rgba-teal-strong">
-                        <p class="white-text">HELP IS AT HAND</p>
+                        <p class="white-text">With a combined total of over 50 years supporting or users we have seen it all and fixed it as well.</p>
                     </div>
                     <p class="white-text">HELP IS AT HAND</p>
                 </div>    
