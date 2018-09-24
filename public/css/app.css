@@ -117,6 +117,25 @@ footer{
   margin: 72.17px 0;
 }
 
+.hexagon p{
+    text-align:center;
+    color:whitesmoke
+}
+
+.hexagon2 p{
+    text-align:center;
+    color:whitesmoke
+}
+
+.hexagon3 p{
+    text-align:center;
+    color:whitesmoke
+}
+
+.hexagon4 p{
+    text-align:center;
+    color:whitesmoke
+}
 .hexagon:before,
 .hexagon:after {
   content: "";
