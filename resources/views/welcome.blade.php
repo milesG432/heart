@@ -1,18 +1,26 @@
 @extends('layouts.app')
 @section('content')
-<div id="topBlock" class="container-fluid">
+<div id="topBlock" class="container-fluid">    
     <div class="row">
-
-    <div class="col-lg">
-        
+        <div class="col-lg">
+            
+        </div>
+        <div class="col-lg" id="topBlockContent">
+            <h3>RUN YOUR BUSINESS YOUR WAY</h3>
+            <p>Proven. Simple. Flexible. Affordable.</p>
+            <p>Heart is the leading supplier of software for small and medium sized Office Supplies companies in the UK and Ireland.</p>                
+        </div>
     </div>
-        
-    <div class="col-lg" id="topBlockContent">
-        <h3>RUN YOUR BUSINESS YOUR WAY</h3>
-        <p>Proven. Simple. Flexible. Affordable.</p>
-        <p>Heart is the leading supplier of software for small and medium sized Office Supplies companies in the UK and Ireland.</p>                
+    <div class="row">
+        <div class="col-lg" id="topBlockContent2">
+            <h3>Software for your office supplies business</h3>
+            <p>Manage your sales, ordering and invoicing with PulseOffice by Heart Systems</p>
+        </div>
+        <div class="col-lg">
+            
+        </div>
     </div>
-    </div>    
+</div>    
 </div>
 
 <div class="container">
@@ -34,7 +42,7 @@
                 <div class="hexagon2" id="hex1">
                     <img src="/img/home-training.png" class="img-fluid " style="display: block;border:none;margin: 0 auto;">
                     <div class="mask flex-center rgba-purple-strong">
-                        <p class="white-text">PulseOffice and PulseStore are so intuitive amd user friendly you will only need minimal training</p>
+                        <p class="white-text">PulseOffice and PulseStore are so intuitive and user friendly you will only need minimal training</p>
                     </div>
                     <p>MINIMAL TRAINING</p>
                 </div>    
