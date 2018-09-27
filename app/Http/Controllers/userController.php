@@ -24,6 +24,7 @@ class userController extends Controller
                 {
                     $user = new User();
                     $result =  $user->checkUser($email, $password);
+                    
                 } 
                 else 
                 {
