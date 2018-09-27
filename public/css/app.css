@@ -99,11 +99,11 @@ footer{
      background-color:#8B6E95;
      height:5.5em;
  }
- 
- #storeMidText{
+
+ #storeMid p{
      text-align: center;
-     color:whitesmoke;
- } 
+ }
+ 
  #topBlockContentPulseStore{
      margin: 0 auto;
      margin-top:19em;
@@ -271,4 +271,47 @@ footer{
   top: 100%;
   width: 0;
   border-top: 72.17px solid #216A80;
+}
+
+.hexagon5 {
+  position: relative;
+  width: 250px; 
+  height: 144.34px;
+  background-color: #16A89D;
+  margin: 72.17px 0;
+}
+
+.hexagon5:before,
+.hexagon5:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+}
+
+.hexagon5:before {
+  bottom: 100%;
+  border-bottom: 72.17px solid #16A89D;
+}
+
+.hexagon5:after {
+  top: 100%;
+  width: 0;
+  border-top: 72.17px solid #16A89D;
+}
+
+#hex1 p{
+    color:whitesmoke;
+    text-align:center;
+}
+
+#loginForm{
+    margin: 0 auto;
+    max-width:50%;
+}
+
+#formContainer{
+    padding-top: 2.5em;
+    padding-bottom:2.5em;
 }

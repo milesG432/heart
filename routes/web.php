@@ -34,3 +34,5 @@ Route::get('/support', function(){
 Route::get('/news', function(){
     return view('news');
 });
+
+Route::post('/authenticate', 'userController@logIn');
