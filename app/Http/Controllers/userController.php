@@ -24,7 +24,12 @@ class userController extends Controller
                 {
                     $user = new User();
                     $result =  $user->checkUser($email, $password);
-                    
+                    if(isset($result['loggedIn']) && $result['loggedIn'] == true)
+                    {
+                        return view("welcome", ["user"=>$result]);
+                    } else {
+                        $errors['noUser'] = "User not found. Please check your details and try again.";
+                    }
                 } 
                 else 
                 {
@@ -34,6 +39,10 @@ class userController extends Controller
             else 
             {
                 $errors['emailError'] = "There is a problem with the supplied email address. Please check your details and try again.";
+            }
+            if(sizeof($errors) > 0)
+            {
+                
             }
             var_dump($errors);
         } catch (Exception $ex) {

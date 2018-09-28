@@ -2,7 +2,12 @@
 
 @section('content')
 <div class="container" id="formContainer">
-    <div id="loginForm">    
+    <div id="loginForm">
+        @if( ! empty($errors))
+            @foreach($errors as $error)
+            <p>{{$error}}</p>
+            @endforeach
+        @endif
         <!-- Default form login -->
         <form class="text-center border border-light p-5" method="post" action="/authenticate">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -43,8 +43,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
-                    </ul>
-                    
+                    </ul>             
                     <ul class="nav">
                         <li class="nav-item">
                             <a class="nav-link" href="/pulseoffice"> PulseOffice</a>
@@ -58,37 +57,40 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/news"> News</a>
                             </li>
+                            @if( ! empty($user) && $user['loggedIn'] == 1)
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Wishlist</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Issue tracker</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Upload area</a>
+                            </li>
+                            @endif
+                            @if( ! empty($user) && $user['accessLevel'] == 'god')
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Site admin</a>
+                            </li>
+                            @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->                        
-                        @guest
+                        <!-- Authentication Links --> 
+                        @if( empty($user) || $user['loggedIn'] != 1)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+                        @else                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}">{{ __('Logout') }}</a>
+                            </li>                            
+                        @endif    
+                        
                     </ul>
                     <div style="float:right">
                     <ul class="nav">
