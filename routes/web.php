@@ -36,3 +36,5 @@ Route::get('/news', function(){
 });
 
 Route::post('/authenticate', 'userController@logIn');
+
+Route::get('/logout', 'userController@logOut');

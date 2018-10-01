@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/wamp64/www/proj/app/Http/Controllers/userController.php</file>
             <file>file:/C:/wamp64/www/proj/routes/web.php</file>
+            <file>file:/C:/wamp64/www/proj/resources/views/welcome.blade.php</file>
             <file>file:/C:/wamp64/www/proj/resources/views/auth/login.blade.php</file>
             <file>file:/C:/wamp64/www/proj/app/User.php</file>
             <file>file:/C:/wamp64/www/proj/resources/views/layouts/app.blade.php</file>

@@ -29,7 +29,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/css/mdb.min.css" rel="stylesheet">
 </head>
 <body>    
-    <div id="app">        
+    <div id="app">                
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel" id='navs'>
             <div class="container-fluid">
                 <nav class="navbar" id='navImage'>
@@ -57,7 +57,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/news"> News</a>
                             </li>
-                            @if( ! empty($user) && $user['loggedIn'] == 1)
+                            @if(Session::get('loggedIn'))            
                             <li class="nav-item">
                                 <a class="nav-link" href="#"> Wishlist</a>
                             </li>
@@ -68,7 +68,7 @@
                                 <a class="nav-link" href="#"> Upload area</a>
                             </li>
                             @endif
-                            @if( ! empty($user) && $user['accessLevel'] == 'god')
+                            @if(Session::get('loggedIn') && Session::get('level') === 'god')
                             <li class="nav-item">
                                 <a class="nav-link" href="#"> Site admin</a>
                             </li>
@@ -87,7 +87,7 @@
                             </li>
                         @else                            
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}">{{ __('Logout') }}</a>
+                                <a class="nav-link" href="/logout">Logout</a>
                             </li>                            
                         @endif    
                         
@@ -104,7 +104,7 @@
             </div>
         </nav>
 
-        <main>
+        <main>            
             @yield('content')
         </main>
         <footer>  

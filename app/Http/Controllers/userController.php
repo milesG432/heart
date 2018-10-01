@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Session;
 
 class userController extends Controller
 {
@@ -23,9 +24,13 @@ class userController extends Controller
                 if($password && strlen($password) >= 6)
                 {
                     $user = new User();
-                    $result =  $user->checkUser($email, $password);
+                    $result =  $user->checkUser($email, $password);                    
                     if(isset($result['loggedIn']) && $result['loggedIn'] == true)
-                    {
+                    {                        
+                        Session()->put('loggedIn',true);
+                        Session()->put('user', $result['user']);
+                        Session()->put('level', $result['accessLevel']);                         
+                        //dd(session()->all());
                         return view("welcome", ["user"=>$result]);
                     } else {
                         $errors['noUser'] = "User not found. Please check your details and try again.";
@@ -42,11 +47,19 @@ class userController extends Controller
             }
             if(sizeof($errors) > 0)
             {
-                
-            }
-            var_dump($errors);
+                return view("auth/login", ["errors"=>$errors]);
+            }            
         } catch (Exception $ex) {
-
+            $errors['exception'] = $ex->getMessage;
+            return view("auth/login", ["errors"=>$errors]);
         }
+    }
+    
+    public function logOut()
+    {
+        Session::flush();
+        $message = "You have been successfully logged out.";
+        return view ("auth/login", ["message"=>$message]);
+        
     }
 }

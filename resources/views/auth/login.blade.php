@@ -3,10 +3,17 @@
 @section('content')
 <div class="container" id="formContainer">
     <div id="loginForm">
-        @if( ! empty($errors))
+        @if( count($errors) > 0)
+        <div class="alert alert-danger" style="text-align: center">
             @foreach($errors as $error)
-            <p>{{$error}}</p>
+            <p>{{$error}}</p><br>
             @endforeach
+        </div>
+        @endif
+        @if( ! empty($message))
+        <div class='alert alert-success'>
+            {{$message}}
+        </div>
         @endif
         <!-- Default form login -->
         <form class="text-center border border-light p-5" method="post" action="/authenticate">
