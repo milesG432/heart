@@ -38,13 +38,7 @@
             </div>
 
             <!-- Sign in button -->
-            <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
-
-            <!-- Register -->
-            <p>Not a member?
-                <a href="">Register</a>
-            </p>            
-            
+            <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>            
         </form>
 <!-- Default form login -->
     </div>

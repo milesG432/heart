@@ -54,5 +54,16 @@ class User extends Authenticatable
             return $errors;
         }
     }
+    
+    public function getAdmins()
+    {
+        try
+        {
+            $results = DB::select("SELECT * FROM user WHERE accessLevel != 'customer'");
+            var_dump($results);
+        } catch (Exception $ex) {
+
+        }
+    }
    
 }

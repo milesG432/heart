@@ -19,18 +19,21 @@ class userController extends Controller
             $email = $request['email'];
             $password = $request['password'];
             
+            //check email address is valid format
             if($email && strlen($email) > 0 && strpos($email, "@") !== false)
             {
+                //check password set and over 6 chars long
                 if($password && strlen($password) >= 6)
                 {
                     $user = new User();
                     $result =  $user->checkUser($email, $password);                    
+                    //if login successfule set user session values
                     if(isset($result['loggedIn']) && $result['loggedIn'] == true)
                     {                        
                         Session()->put('loggedIn',true);
                         Session()->put('user', $result['user']);
                         Session()->put('level', $result['accessLevel']);                         
-                        //dd(session()->all());
+                        //redirect to home and show full navebar
                         return view("welcome", ["user"=>$result]);
                     } else {
                         $errors['noUser'] = "User not found. Please check your details and try again.";
@@ -45,6 +48,7 @@ class userController extends Controller
             {
                 $errors['emailError'] = "There is a problem with the supplied email address. Please check your details and try again.";
             }
+            //if login failed redirect to login page and show errors
             if(sizeof($errors) > 0)
             {
                 return view("auth/login", ["errors"=>$errors]);
@@ -59,7 +63,18 @@ class userController extends Controller
     {
         Session::flush();
         $message = "You have been successfully logged out.";
-        return view ("auth/login", ["message"=>$message]);
+        return view ("auth/login", ["message"=>$message]);        
+    }
+    
+    public function getAdmins()
+    {
+        try
+        {
+        $user = new User();
+        $result = $user->getAdmins();
+        } catch (Exception $ex) {
+
+        }
         
     }
 }
