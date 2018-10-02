@@ -50,7 +50,7 @@ class User extends Authenticatable
                 $errors['Error finding login credentials. Please contact heart systems.'];
             }
         } catch (Exception $ex) {
-            $errors['exception'] = $ex['message'];
+            $errors['exception'] = $ex->getMessage;
             return $errors;
         }
     }
@@ -59,10 +59,26 @@ class User extends Authenticatable
     {
         try
         {
-            $results = DB::select("SELECT * FROM user WHERE accessLevel != 'customer'");
-            var_dump($results);
+            $errors = 
+            [
+                
+            ];
+            $results = DB::select("SELECT * FROM user WHERE accessLevel != 'customer'");            
+            if(sizeof($results) > 0)
+            {
+                return $results;
+            } 
+            else 
+            {
+                $errors['users'] = "No users found. Please contact a site administrator";
+            }
+            if(sizeof($errors) > 0)
+            {
+                return $errors;
+            }
         } catch (Exception $ex) {
-
+                $errors['exception'] = $ex->getMessage;
+                return $errors;
         }
     }
    

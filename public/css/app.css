@@ -155,6 +155,10 @@ footer{
     color:whitesmoke
 }
 
+#newAdminButton button{
+    float:right;
+}
+
 .hexagon2 p{
     text-align:center;
     color:whitesmoke

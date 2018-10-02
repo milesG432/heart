@@ -70,11 +70,25 @@ class userController extends Controller
     {
         try
         {
+        $errors =
+        [
+            
+        ];
         $user = new User();
+        //get users with admin or heart access levels
         $result = $user->getAdmins();
-        } catch (Exception $ex) {
-
+        //if users exist
+        if(isset($result['errors']) || isset($result['exception']))
+        {
+            return view ("admin", ["errors"=>$result]);
+        }
+        else if(sizeof($result) > 0)
+        {
+            return view ("admin", ["admins"=>$result]);
         }
         
+        } catch (Exception $ex) {
+            $errors['exception'] = $ex->getMessage;
+        }        
     }
 }
