@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
+use Hash;
 
 class userController extends Controller
 {
@@ -17,7 +18,7 @@ class userController extends Controller
         try
         {
             $email = $request['email'];
-            $password = $request['password'];
+            $password = $request['password'];           
             
             //check email address is valid format
             if($email && strlen($email) > 0 && strpos($email, "@") !== false)
@@ -90,5 +91,88 @@ class userController extends Controller
         } catch (Exception $ex) {
             $errors['exception'] = $ex->getMessage;
         }        
+    }
+    
+    public function newAdmin(request $request)
+    {
+        try
+        {
+            $errors = 
+            [
+
+            ];
+            $user = new User();
+            $admins = $user->getAdmins();
+            //dd($admins);
+            foreach($admins as $admin)
+            {                
+                if($admin->email == $request['email'])
+                {
+                    $errors['duplicate'] = "This email address is already in use.";
+                    return view("/admin", ["errors"=>$errors], ["admins"=>$admins]);
+                }
+            }            
+            //validate firstName field
+            if($request['firstName'] && strlen($request['firstName']) > 1)
+            {
+                $firstName = $request['firstName'];
+            }
+            else
+            {
+                $errors['firstName'] = "First Name field can not be blank";
+            }
+            
+            //validate lastName field
+            if($request['lastName'] && strlen($request['lastName']) > 1)
+            {
+                $lastName = $request['lastName'];
+            }
+            else
+            {
+                $errors['lastName'] = "Last Name field can not be blank";
+            }
+            
+            //validate email
+            if($request['email'] && strpos($request['email'], "@") !== false)
+            {
+                $email = $request['email'];
+            }
+            else
+            {
+                $errors['email'] = "Email address can not be blank and must be in a valid email address format";
+            }
+            
+            //validat password
+            if($request && strlen($request['password']) >= 6)
+            {
+                $password = Hash::make($request['password']);
+            }
+            else 
+            {
+                $errors['password'] = "Password must not be blank and must be at least 6 characters long";
+            }
+            //if errors return to admin screen and display errors else proceed to insert new admin
+            if(sizeof($errors) > 0)
+            {
+                return view('/admin', ["errors"=>$errors]);
+            }
+            else 
+            {                
+                $result = $user->addAdmin($firstName, $lastName, $email, $password);
+            }
+            
+            if(true == $result)
+            {                
+                header("Location: /admin");
+                die();
+            } else 
+            {
+                $errors['add'] = "There has been a problem creating this admin. Please try again";
+                return view('/admin', ["errors"=>$errors]);
+            }            
+        } catch (Exception $ex) {
+            $errors['exception'] = $ex->getMessage;
+            return $errors;
+        }
     }
 }

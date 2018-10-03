@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use DB;
-
+use Hash;
 
 
 class User extends Authenticatable
@@ -25,8 +25,8 @@ class User extends Authenticatable
         {
             if($email && $password)
             {
-                $results = DB::select("SELECT * FROM user WHERE email = '" . $email . "' and password = '" . $password . "' LIMIT 1;");                
-                if(sizeof($results) == 1)
+                $results = DB::select("SELECT * FROM user WHERE email = '" . $email . "' LIMIT 1;");                
+                if(sizeof($results) == 1 && Hash::check($password, $results[0]->password))
                 {                    
                     $login['loggedIn'] = true;
                     $login['user'] = $results[0] -> firstname;
@@ -79,6 +79,30 @@ class User extends Authenticatable
         } catch (Exception $ex) {
                 $errors['exception'] = $ex->getMessage;
                 return $errors;
+        }
+    }
+    
+    public function addAdmin($firstName, $lastName, $email, $password)
+    {
+        try
+        {            
+            $createdAt = date('Y-m-d H:i:s');
+            $result = DB::table('user')->insert
+            (
+                [
+                    'firstname' => $firstName, 'surname' => $lastName, 'email' => $email, 'accessLevel' => 'admin', 'createdAt' => $createdAt, 'password' => $password
+                ]
+            );        
+            if($result && true == $result)
+            {
+                return true;
+            } 
+            else 
+            {
+                return false;
+            }
+        } catch (Exception $ex) {
+            return $ex->getMessage;
         }
     }
    

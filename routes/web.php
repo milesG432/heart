@@ -40,4 +40,6 @@ Route::post('/authenticate', 'userController@logIn');
 Route::get('/logout', 'userController@logOut');
 
 Route::get('/admin','userController@getAdmins');
+
+Route::post('/createAdmin', 'userController@newAdmin');
     

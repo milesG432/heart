@@ -24,10 +24,13 @@
                 
             </div>
             <div class="col" id="newAdminButton">
-                <button class="bg-success" id="newAdmin">Add new admin</button>
+                <button type="button" class="bg-success" data-toggle="modal" data-target="#basicExampleModal">
+                    New Admin
+                </button>
             </div>
         </div>        
         <hr>
+        @if(isset($admins))
         <table id="adminTable" class='table table-hover'>
             <thead>
                 <tr>
@@ -48,32 +51,52 @@
                 @endforeach                
             </tbody>
         </table>
+        @endif        
     </div>   
 
-        <!-- Modal -->
-        <div class="modal fade" id="newAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-
-        <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
-        <div class="modal-dialog modal-dialog-centered" role="document">
-
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Admin</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div class="modal-body">
+                <!-- new admin form  -->
+                <form class="text-center border border-light p-5" method="post" action="/createAdmin">
+                    <div class="form-row mb-4">
+                        <div class="col">
+                            <!-- First name -->
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="firstName" required="required">
+                        </div>
+                        <div class="col">
+                            <!-- Last name -->
+                            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" name="lastName" required="required">
+                        </div>
+                    </div>
+
+                    <!-- E-mail -->
+                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email" required="required">
+
+                    <!-- Password -->
+                    <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" name="password" required="required">
+                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4" required="required">
+                        At least 6 characters
+                    </small>
+
+                    <!-- Sign up button -->
+                    <button class="btn btn-info my-4 btn-block" type="submit">Submit</button>
+                    <hr>
+                </form>
+<!-- Default form register -->
+            </div>            
         </div>
-        </div>
+    </div>
+</div>
     @endif
 </div>    
 @endsection
