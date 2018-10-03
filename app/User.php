@@ -106,4 +106,13 @@ class User extends Authenticatable
         }
     }
    
+    public function deleteAdmin($id)
+    {
+        try
+        {
+            
+        } catch (Exception $ex) {
+
+        }
+    }
 }

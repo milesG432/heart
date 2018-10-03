@@ -142,8 +142,8 @@ class userController extends Controller
                 $errors['email'] = "Email address can not be blank and must be in a valid email address format";
             }
             
-            //validat password
-            if($request && strlen($request['password']) >= 6)
+            //validate password
+            if($request['password'] && strlen($request['password']) >= 6)
             {
                 $password = Hash::make($request['password']);
             }
@@ -173,6 +173,29 @@ class userController extends Controller
         } catch (Exception $ex) {
             $errors['exception'] = $ex->getMessage;
             return $errors;
+        }
+    }
+    
+    public function deleteAdmin()
+    {
+        try
+        {
+            $id = $_GET['id'];
+            $errors = 
+            [
+                
+            ];
+            if($id)
+            {
+                
+            }
+            else
+            {
+                $errors['delete'] = "Unable to delete admin at this time. Please consult the Necronomicon ";
+                return view("/admin", ["errors"=>$errors]);
+            }
+        } catch (Exception $ex) {
+
         }
     }
 }

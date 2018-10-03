@@ -46,7 +46,7 @@
                     <td>{{$admin->firstname}} {{$admin->surname}}</td>
                     <td>{{$admin->email}}</td>
                     <td>{{$admin->accessLevel}}</td>
-                    <td><button class="btn-outline-warning">Delete Admin</button></td>
+                    <td><a class="btn-outline-warning" href="/deleteAdmin?id={{$admin->id}}">Delete Admin</a></td>
                 </tr>
                 @endforeach                
             </tbody>
