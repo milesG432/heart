@@ -55,14 +55,15 @@ class User extends Authenticatable
         }
     }
     
-    public function getAdmins()
+    public function getAdmins($id = null)
     {
         try
         {
+            
             $errors = 
             [
                 
-            ];
+            ];            
             $results = DB::select("SELECT * FROM user WHERE accessLevel != 'customer'");            
             if(sizeof($results) > 0)
             {
@@ -146,5 +147,5 @@ class User extends Authenticatable
             $errors['exception'] = $ex->getMessage;
             return $errors;
         }
-    }
+    }    
 }

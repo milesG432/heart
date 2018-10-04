@@ -46,7 +46,7 @@
             </thead>
             <tbody>                
                 @foreach($admins as $admin)
-                <tr>
+                <tr onclick="editAdmin({{$admin->id}})">
                     <td>{{$admin->firstname}} {{$admin->surname}}</td>
                     <td>{{$admin->email}}</td>
                     <td>{{$admin->accessLevel}}</td>

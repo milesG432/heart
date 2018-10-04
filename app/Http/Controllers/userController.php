@@ -168,6 +168,17 @@ class userController extends Controller
         }
     }
     
+    public function editAdmin()
+    {
+        try
+        {
+           $id = $_GET['id'];
+           echo json_encode($id);
+        } catch (Exception $ex) {
+
+        }
+    }
+    
     public function deleteAdmin()
     {
         try
@@ -201,4 +212,5 @@ class userController extends Controller
             return redirect('/admin');
         }
     }
+    
 }

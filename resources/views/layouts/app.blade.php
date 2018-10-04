@@ -71,21 +71,7 @@
                                     @endif
                                 </div>
                             </li>
-<!--                            <li class="nav-item">
-                                <a class="nav-link" href="#"> Wishlist</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"> Issue tracker</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"> Upload area</a>
-                            </li>
                             @endif
-                            @if(Session::get('loggedIn') && Session::get('level') !== 'user')
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin"> Site admin</a>
-                            </li>
-                            @endif-->
                     </ul>
 
                     <!-- Right Side Of Navbar -->

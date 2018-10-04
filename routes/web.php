@@ -44,4 +44,6 @@ Route::get('/admin','userController@getAdmins');
 Route::post('/createAdmin', 'userController@newAdmin');
 
 route::get('/deleteAdmin', 'userController@deleteAdmin');
+
+route::get('/editAdmin', 'userController@editAdmin');
     
