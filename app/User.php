@@ -110,9 +110,41 @@ class User extends Authenticatable
     {
         try
         {
-            
+            $errors = 
+            [
+                
+            ];
+        if($id)
+        {            
+            $confirmID = DB::table('user')->where('id', $id)->first();
+            if($confirmID->id == $id)
+            {
+                $result = DB::table('user')->delete($id);
+                if(true == $result)
+                {
+                    return $result;
+                }
+                else 
+                {
+                    $errors['invalid'] = "Can not delete admin detais. Please contact the site administrator.";
+                }
+            }
+            else
+            {
+                $errors['invalid'] = "Can not locate admin detais. Please contact the site administrator.";
+            }
+        }
+        else 
+        {
+            $errors['noID'] = "No Admin specified.";
+        }
+        if(sizeof($errors) > 0)
+        {
+            return $errors;
+        }
         } catch (Exception $ex) {
-
+            $errors['exception'] = $ex->getMessage;
+            return $errors;
         }
     }
 }

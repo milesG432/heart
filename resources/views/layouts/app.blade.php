@@ -56,8 +56,22 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/news"> News</a>
                             </li>
-                            @if(Session::get('loggedIn'))            
-                            <li class="nav-item">
+                            @if(Session::get('loggedIn')) 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                 accesskey=""aria-expanded="false">Help</a>
+                                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Wishlist</a>
+                                    <a class="dropdown-item" href="#">Issue tracker</a>
+                                    <a class="dropdown-item" href="#">Upload area</a>
+                                    <a class="dropdown-item" href="#">Wiki</a>
+                                    @if(Session::get('loggedIn') && Session::get('level') !== 'user')
+                                    <hr>
+                                    <a class="dropdown-item" href="/admin">Site admin</a>
+                                    @endif
+                                </div>
+                            </li>
+<!--                            <li class="nav-item">
                                 <a class="nav-link" href="#"> Wishlist</a>
                             </li>
                             <li class="nav-item">
@@ -71,7 +85,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin"> Site admin</a>
                             </li>
-                            @endif
+                            @endif-->
                     </ul>
 
                     <!-- Right Side Of Navbar -->

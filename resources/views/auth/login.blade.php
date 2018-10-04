@@ -3,16 +3,14 @@
 @section('content')
 <div class="container" id="formContainer">
     <div id="loginForm">
-        @if( count($errors) > 0)
-        <div class="alert alert-danger" style="text-align: center">
-            @foreach($errors as $error)
-            <p>{{$error}}</p><br>
-            @endforeach
+        @if( Session::has('error'))
+        <div class="alert alert-danger" style="text-align: center">            
+            <h3>{{Session::get('error')}}</h3>            
         </div>
         @endif
-        @if( ! empty($message))
+        @if( Session::has('message'))
         <div class='alert alert-success'>
-            {{$message}}
+            {{Session::get('message')}}
         </div>
         @endif
         <!-- Default form login -->

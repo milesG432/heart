@@ -11,10 +11,7 @@ class userController extends Controller
 {
     //validate user input and pass to User model if ok
     public function logIn(request $request)
-    {
-        $errors = [
-            
-        ];
+    {        
         try
         {
             $email = $request['email'];
@@ -35,46 +32,41 @@ class userController extends Controller
                         Session()->put('user', $result['user']);
                         Session()->put('level', $result['accessLevel']);                         
                         //redirect to home and show full navebar
-                        return view("welcome", ["user"=>$result]);
+                        return redirect("/");
                     } else {
-                        $errors['noUser'] = "User not found. Please check your details and try again.";
+                        Session::flash('error', 'User not found. Please check your details and try again.');                        
                     }
                 } 
                 else 
                 {
-                    $errors['passwordError'] = "There is a problem with the supplied password. Please check your details and try again";
+                    Session::flash('error', 'There is a problem with the supplied password. Please check your details and try again');
                 }
             }
             else 
             {
-                $errors['emailError'] = "There is a problem with the supplied email address. Please check your details and try again.";
+                Session::flash('error', 'There is a problem with the supplied email address. Please check your details and try again.');
             }
             //if login failed redirect to login page and show errors
-            if(sizeof($errors) > 0)
+            if(Session::has('error'))
             {
-                return view("auth/login", ["errors"=>$errors]);
+                return redirect("login");
             }            
         } catch (Exception $ex) {
-            $errors['exception'] = $ex->getMessage;
-            return view("auth/login", ["errors"=>$errors]);
+            Session::flash('error', $ex->getMessage);
+            return redirect('/login');
         }
     }
     
     public function logOut()
     {
-        Session::flush();
-        $message = "You have been successfully logged out.";
-        return view ("auth/login", ["message"=>$message]);        
+        Session::flush();        
+        return redirect('/');
     }
     
     public function getAdmins()
     {
         try
-        {
-        $errors =
-        [
-            
-        ];
+        {        
         $user = new User();
         //get users with admin or heart access levels
         $result = $user->getAdmins();
@@ -82,6 +74,8 @@ class userController extends Controller
         if(isset($result['errors']) || isset($result['exception']))
         {
             return view ("admin", ["errors"=>$result]);
+            Session::flash('error', $result['errors']);
+            return redirect('/admin');
         }
         else if(sizeof($result) > 0)
         {
@@ -89,7 +83,8 @@ class userController extends Controller
         }
         
         } catch (Exception $ex) {
-            $errors['exception'] = $ex->getMessage;
+            Session::flash('error', $ex->getMessage);
+            return redirect('/admin');
         }        
     }
     
@@ -97,10 +92,6 @@ class userController extends Controller
     {
         try
         {
-            $errors = 
-            [
-
-            ];
             $user = new User();
             $admins = $user->getAdmins();
             //dd($admins);
@@ -108,8 +99,8 @@ class userController extends Controller
             {                
                 if($admin->email == $request['email'])
                 {
-                    $errors['duplicate'] = "This email address is already in use.";
-                    return view("/admin", ["errors"=>$errors], ["admins"=>$admins]);
+                    Session::flash('error', 'Email address already in use.');
+                    return redirect('/admin');
                 }
             }            
             //validate firstName field
@@ -119,6 +110,7 @@ class userController extends Controller
             }
             else
             {
+                Session::flash('error', 'First name can not be blank');
                 $errors['firstName'] = "First Name field can not be blank";
             }
             
@@ -129,7 +121,7 @@ class userController extends Controller
             }
             else
             {
-                $errors['lastName'] = "Last Name field can not be blank";
+                Session::flash('error', 'Last name must not be blank');                
             }
             
             //validate email
@@ -139,7 +131,7 @@ class userController extends Controller
             }
             else
             {
-                $errors['email'] = "Email address can not be blank and must be in a valid email address format";
+                Session::flash('error', 'Email address can not be blank and must be in a standard email format');                
             }
             
             //validate password
@@ -149,12 +141,12 @@ class userController extends Controller
             }
             else 
             {
-                $errors['password'] = "Password must not be blank and must be at least 6 characters long";
+                Session::flash('error', 'Password must not be blank and must be at least 6 characters long.');                
             }
             //if errors return to admin screen and display errors else proceed to insert new admin
-            if(sizeof($errors) > 0)
+            if(Session::has('error'))
             {
-                return view('/admin', ["errors"=>$errors]);
+                return redirect ('/admin');
             }
             else 
             {                
@@ -163,16 +155,16 @@ class userController extends Controller
             
             if(true == $result)
             {                
-                header("Location: /admin");
-                die();
+                Session::flash('message', 'User ' . $firstName . ' ' . $lastName . ' created.');
+                return redirect('/admin');
             } else 
             {
-                $errors['add'] = "There has been a problem creating this admin. Please try again";
-                return view('/admin', ["errors"=>$errors]);
+                Session::flash('error', 'There has been a problem creating this admin. Please try again');
+                return redirect('/admin');
             }            
         } catch (Exception $ex) {
-            $errors['exception'] = $ex->getMessage;
-            return $errors;
+            Session::flash('error', $ex->getMessage);
+            return redirect('/admin');
         }
     }
     
@@ -181,21 +173,32 @@ class userController extends Controller
         try
         {
             $id = $_GET['id'];
-            $errors = 
-            [
-                
-            ];
             if($id)
             {
-                
+                $user = new User();
+                $admins = $user->getAdmins();
+                $result = $user->deleteAdmin($id);
+                if(1 == $result)
+                {
+                    Session::flash('message', 'Admin deleted');
+                    return redirect('/admin');
+                }
+                else
+                {                    
+                    Session::flash('error', 'There was a problem deleting this admin. Please contact the site administrator');
+                }
             }
             else
+            {                
+                Session::flash('error', 'Unable to delete admin at this time. Please consult the Necronomicon ');
+            }
+            if(Session::has('error'))
             {
-                $errors['delete'] = "Unable to delete admin at this time. Please consult the Necronomicon ";
-                return view("/admin", ["errors"=>$errors]);
+                return redirect('/admin');                
             }
         } catch (Exception $ex) {
-
+            Session::flash('error', $ex->getMessage);
+            return redirect('/admin');
         }
     }
 }
