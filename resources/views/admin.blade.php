@@ -8,6 +8,7 @@
         <H1>PLEASE USE THE NAVIGATION LINKS PROVIDED ON THE HOME PAGE AND ENSURE YOU ARE LOGGED IN</H1>
     </div>
     @else
+    @if(Session::get('level') == 'admin')
     <div id='siteAdmins'>
         @if( Session::has('error'))
         <div class="alert alert-danger" style="text-align: center">            
@@ -22,15 +23,15 @@
         @endif
         <div class="row">
             <div class="col">
-                <h4>Current Site Admins</h4>
+                <h4>Current Site Users</h4>
             </div>
             <div class="col">
                 
             </div>
-            <div class="col" id="newAdminButton">
+            <div class="col" id="newAdminButton">                
                 <button type="button" class="bg-success" data-toggle="modal" data-target="#basicExampleModal">
-                    New Admin
-                </button>
+                    New user
+                </button>                
             </div>
         </div>        
         <hr>
@@ -50,31 +51,39 @@
                     <td>{{$admin->firstname}} {{$admin->surname}}</td>
                     <td>{{$admin->email}}</td>
                     <td>{{$admin->accessLevel}}</td>
-                    <td><a class="btn-outline-warning" href="/deleteAdmin?id={{$admin->id}}">Delete Admin</a></td>
+                    <td><a class="btn-outline-warning" href="/deleteAdmin?id={{$admin->id}}">Delete User</a></td>
                 </tr>
                 @endforeach                
             </tbody>
         </table>
         @endif        
-    </div>   
+    </div>
+    @else
+    <div class='container'>
+        <div class='alert alert-danger' style='text-align: center'>
+        <H1>You do not have sufficient access rights to view this page</H1>
+    </div>
+    </div>
+    @endif
 
 <!-- Modal -->
 <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New Admin</h5>
+                <h5 class="modal-title" id="exampleModalLabel">New User</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <!-- new admin form  -->
-                <form class="text-center border border-light p-5" method="post" action="/createAdmin">
+                <form class="text-center border border-light p-5" method="post" action="/createAdmin" id="adminForm">
                     <div class="form-row mb-4">
                         <div class="col">
                             <!-- First name -->
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id" id="id" value="">
                             <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="firstName" required="required">
                         </div>
                         <div class="col">

@@ -64,7 +64,14 @@ class User extends Authenticatable
             [
                 
             ];            
-            $results = DB::select("SELECT * FROM user WHERE accessLevel != 'customer'");            
+            if(null !== $id)
+            {
+                $results = DB::select("SELECT * FROM user WHERE id = '" . $id . "';");
+            }
+            else
+            {
+                $results = DB::select("SELECT * FROM user WHERE accessLevel != 'customer'");            
+            }            
             if(sizeof($results) > 0)
             {
                 return $results;
@@ -104,6 +111,32 @@ class User extends Authenticatable
             }
         } catch (Exception $ex) {
             return $ex->getMessage;
+        }
+    }
+    
+    public function insertEdittedAdmin($admin)
+    {
+        try
+        {
+            $error = 
+            [
+
+            ];
+            if($admin && sizeof($admin) == 5)
+            {
+                $result = DB::table('user')
+                        ->where('id', $admin['id'])
+                        ->update(['firstname' => $admin['firstname']], ['lastname' => $admin['lastname']], ['email' => $admin['email']], ['password' => $admin['password']]);
+                return $result;
+            }
+            else 
+            {
+                $error['missing fields'] = "Not all needed fields have been supplied";
+                return $error;
+            }
+        } catch (Exception $ex) {
+            $error['exception'] = $ex->getMessage;
+            return $error;
         }
     }
    

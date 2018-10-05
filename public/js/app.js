@@ -9,7 +9,20 @@ $(document).ready( function () {
 //populate and create edit admin modal
 function editAdmin(id){    
     $.get('/editAdmin?id=' + id, function(data){
-        console.log(data);
+        var error = '';
+        if(data.length < 1){
+            error = "gone tits up";
+        } else {
+            var user = $.parseJSON(data);            
+            $("#basicExampleModal").modal('show');
+            $("#exampleModalLabel").text("Edit " + user[0].firstname + " " + user[0].surname);
+            $('#defaultRegisterFormFirstName').val(user[0].firstname);
+            $('#defaultRegisterFormLastName').val(user[0].surname);
+            $('#defaultRegisterFormEmail').val(user[0].email);
+            $('#id').val(user[0].id);
+            $('#adminForm').attr('action', '/editAdminDetails');
+        }
+        
     });
 }
 

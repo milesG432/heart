@@ -172,10 +172,61 @@ class userController extends Controller
     {
         try
         {
-           $id = $_GET['id'];
-           echo json_encode($id);
+            $errros = [];
+            
+            $id = $_GET['id'];
+            $user = new User();
+            $admin = $user->getAdmins($id);
+            if(sizeof($admin) > 0)
+            {
+               echo json_encode($admin);
+            }
+            else 
+            {
+               $errors['noAdmin'] = "Could not find specified admin details.";
+            }
+           
         } catch (Exception $ex) {
-
+            $errros['noAdmin'] = $ex->getMessage;
+        }
+    }
+    
+    public function insertEdittedAdmin(request $request)
+    {
+        try
+        {
+            if($request['id'])
+            {
+                $admin = 
+                [
+                    'id' => $request['id'],
+                    'firstname' => $request['firstName'],
+                    'lastname' => $request['lastLame'],
+                    'email' => $request['email'], 
+                    'password' => $request['password']
+                ];
+                
+                $user = new User();
+                $result = $user->insertEdittedAdmin($admin);
+                if(1 == $result)
+                {
+                    Session::flash('message', "Admin has been successfully edited, well done you!");
+                    return redirect('/admin');
+                }
+                else
+                {
+                    Session::flash('error', "Account could not be edited, Oh flip. :(");
+                    return redirect('/admin');
+                }
+            }
+            else 
+            {
+                Session::flash('error', "Admin account not found. Please contact Dev.");
+                return redirect('admin');
+            }
+        } catch (Exception $ex) {
+            Session::flash('error', $ex->getMessage);
+            return redirect('/admin');
         }
     }
     
