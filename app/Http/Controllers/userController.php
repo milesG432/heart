@@ -150,7 +150,7 @@ class userController extends Controller
             }
             else 
             {       
-                $result = $user->addAdmin($firstName, $lastName, $email, $password, $request['accessLevel']);
+                $result = $user->addAdmin($firstName, $lastName, $email, $password, $request['accessLevel'], $request['company']);
             }
             
             if(true == $result)
@@ -175,7 +175,7 @@ class userController extends Controller
             $errros = [];
             
             $id = $_GET['id'];
-            $user = new User();
+            $user = new User();            
             $admin = $user->getAdmins($id);
             if(sizeof($admin) > 0)
             {
@@ -204,7 +204,8 @@ class userController extends Controller
                     'lastname' => $request['lastName'],
                     'email' => $request['email'], 
                     'password' => $request['password'],
-                    'accessLevel' => $request['accessLevel']
+                    'accessLevel' => $request['accessLevel'],
+                    'company' => $request['company']
                 ];
                 
                 $user = new User();

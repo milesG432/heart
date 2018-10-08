@@ -90,7 +90,7 @@ class User extends Authenticatable
         }
     }
     
-    public function addAdmin($firstName, $lastName, $email, $password, $accessLevel)
+    public function addAdmin($firstName, $lastName, $email, $password, $accessLevel, $company)
     {
         try
         {            
@@ -98,7 +98,7 @@ class User extends Authenticatable
             $result = DB::table('user')->insert
             (
                 [
-                    'firstname' => $firstName, 'surname' => $lastName, 'email' => $email, 'accessLevel' => 'admin', 'createdAt' => $createdAt, 'password' => $password , 'accessLevel' => $accessLevel
+                    'firstname' => $firstName, 'surname' => $lastName, 'email' => $email, 'accessLevel' => 'admin', 'createdAt' => $createdAt, 'password' => $password , 'accessLevel' => $accessLevel, 'company' => $company
                 ]
             );        
             if($result && true == $result)
@@ -118,11 +118,12 @@ class User extends Authenticatable
     {
         try
         {            
+            //dd($admin);
             $error = 
             [
 
             ];
-            if($admin && sizeof($admin) == 6)
+            if($admin && sizeof($admin) == 7)
             {                
                 $result = DB::table('user')
                         ->where('id', $admin['id'])
@@ -131,7 +132,8 @@ class User extends Authenticatable
                             'surname' => $admin['lastname'],
                             'email' => $admin['email'],
                             'accessLevel' => $admin['accessLevel'],
-                            'password' => $admin['password']
+                            'password' => $admin['password'],
+                            'company' => $admin['company']
                         ]);                
                 return $result;
             }

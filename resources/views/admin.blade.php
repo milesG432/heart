@@ -41,6 +41,7 @@
                 <tr>
                     <th>User Name</th>
                     <th>Email Address</th>
+                    <th>Company</th>
                     <th>Access Level</th>
                     <th>Delete Admin</th>
                 </tr>
@@ -50,6 +51,7 @@
                 <tr onclick="editAdmin({{$admin->id}})">
                     <td>{{$admin->firstname}} {{$admin->surname}}</td>
                     <td>{{$admin->email}}</td>
+                    <td>{{$admin->company}}</td>
                     <td>{{$admin->accessLevel}}</td>
                     <td><a class="btn-outline-warning" href="/deleteAdmin?id={{$admin->id}}">Delete User</a></td>
                 </tr>
@@ -97,6 +99,8 @@
                             <option value="admin">Admin</option>
                             <option value="customer">Customer</option>         
                         </select>
+                     <br>
+                     <input type="text" id="defaultRegisterFormCompany" class="form-control" placeholder="Company" name="company">
                      <br>
                     <!-- E-mail -->
                     <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email" required="required" autocomplete="email">

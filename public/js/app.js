@@ -14,12 +14,14 @@ function editAdmin(id){
             error = "No user data found. Please contact a site administrator";
         } else {
             var user = $.parseJSON(data);            
+            console.log(data);
             $("#basicExampleModal").modal('show');
             $("#exampleModalLabel").text("Edit " + user[0].firstname + " " + user[0].surname);
             $('#defaultRegisterFormFirstName').val(user[0].firstname);
             $('#defaultRegisterFormLastName').val(user[0].surname);
             $('#defaultRegisterFormEmail').val(user[0].email);
             $('#exampleFormControlSelect1').val(user[0].accessLevel);
+            $('#defaultRegisterFormCompany').val(user[0].company);
             $('#id').val(user[0].id);
             $('#adminForm').attr('action', '/editAdminDetails');
         }
