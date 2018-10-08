@@ -4,8 +4,10 @@
 @section('content')
 <div class='container'>
     @if(Session::get('loggedIn') != 'true')
-    <div class='alert alert-danger'>
-        <H1>PLEASE USE THE NAVIGATION LINKS PROVIDED ON THE HOME PAGE AND ENSURE YOU ARE LOGGED IN</H1>
+    <div class="container">
+        <div>
+            <img src="/img/403.png">
+        </div>
     </div>
     @else
     @if(Session::get('level') == 'admin')

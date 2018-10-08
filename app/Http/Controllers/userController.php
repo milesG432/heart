@@ -24,10 +24,12 @@ class userController extends Controller
                 if($password && strlen($password) >= 6)
                 {
                     $user = new User();
-                    $result =  $user->checkUser($email, $password);                    
+                    $result =  $user->checkUser($email, $password);  
+                    
                     //if login successfule set user session values
                     if(isset($result['loggedIn']) && $result['loggedIn'] == true)
                     {                        
+                        Session()->put('id', $result['id']);
                         Session()->put('loggedIn',true);
                         Session()->put('user', $result['user']);
                         Session()->put('level', $result['accessLevel']);                         

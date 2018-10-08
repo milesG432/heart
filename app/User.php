@@ -27,7 +27,8 @@ class User extends Authenticatable
             {
                 $results = DB::select("SELECT * FROM user WHERE email = '" . $email . "' LIMIT 1;");                
                 if(sizeof($results) == 1 && Hash::check($password, $results[0]->password))
-                {                    
+                {   
+                    $login['id'] = $results[0]->id;
                     $login['loggedIn'] = true;
                     $login['user'] = $results[0] -> firstname;
                     $login['accessLevel'] = $results[0] -> accessLevel;

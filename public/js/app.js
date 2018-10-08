@@ -1,7 +1,7 @@
 
 //admins table
 $(document).ready( function () {
-    if(window.location.href.indexOf("/admin") > -1){
+    if(window.location.href.indexOf("/admin") > -1 || window.location.href.indexOf("/issues") > -1){
         $('#adminTable').DataTable();
     }
 });

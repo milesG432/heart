@@ -62,7 +62,7 @@
                                  accesskey=""aria-expanded="false">Help</a>
                                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="#">Wishlist</a>
-                                    <a class="dropdown-item" href="#">Issue tracker</a>
+                                    <a class="dropdown-item" href="/issues">Issue tracker</a>
                                     <a class="dropdown-item" href="#">Upload area</a>
                                     <a class="dropdown-item" href="#">Wiki</a>
                                     @if(Session::get('loggedIn') && Session::get('level') !== 'user')
@@ -104,7 +104,7 @@
             </div>
         </nav>
 
-        <main>            
+        <main>                        
             @yield('content')
         </main>
         <footer>  
