@@ -70,7 +70,7 @@ class User extends Authenticatable
             }
             else
             {
-                $results = DB::select("SELECT * FROM user WHERE accessLevel != 'customer'");            
+                $results = DB::select("SELECT * FROM user");            
             }            
             if(sizeof($results) > 0)
             {
@@ -90,7 +90,7 @@ class User extends Authenticatable
         }
     }
     
-    public function addAdmin($firstName, $lastName, $email, $password)
+    public function addAdmin($firstName, $lastName, $email, $password, $accessLevel)
     {
         try
         {            
@@ -98,7 +98,7 @@ class User extends Authenticatable
             $result = DB::table('user')->insert
             (
                 [
-                    'firstname' => $firstName, 'surname' => $lastName, 'email' => $email, 'accessLevel' => 'admin', 'createdAt' => $createdAt, 'password' => $password
+                    'firstname' => $firstName, 'surname' => $lastName, 'email' => $email, 'accessLevel' => 'admin', 'createdAt' => $createdAt, 'password' => $password , 'accessLevel' => $accessLevel
                 ]
             );        
             if($result && true == $result)
@@ -117,20 +117,26 @@ class User extends Authenticatable
     public function insertEdittedAdmin($admin)
     {
         try
-        {
+        {            
             $error = 
             [
 
             ];
-            if($admin && sizeof($admin) == 5)
-            {
+            if($admin && sizeof($admin) == 6)
+            {                
                 $result = DB::table('user')
                         ->where('id', $admin['id'])
-                        ->update(['firstname' => $admin['firstname']], ['lastname' => $admin['lastname']], ['email' => $admin['email']], ['password' => $admin['password']]);
+                        ->update([
+                            'firstname' => $admin['firstname'],
+                            'surname' => $admin['lastname'],
+                            'email' => $admin['email'],
+                            'accessLevel' => $admin['accessLevel'],
+                            'password' => $admin['password']
+                        ]);                
                 return $result;
             }
             else 
-            {
+            {                
                 $error['missing fields'] = "Not all needed fields have been supplied";
                 return $error;
             }
@@ -160,17 +166,17 @@ class User extends Authenticatable
                 }
                 else 
                 {
-                    $errors['invalid'] = "Can not delete admin detais. Please contact the site administrator.";
+                    $errors['invalid'] = "Can not delete user detais. Please contact the site administrator.";
                 }
             }
             else
             {
-                $errors['invalid'] = "Can not locate admin detais. Please contact the site administrator.";
+                $errors['invalid'] = "Can not locate user detais. Please contact the site administrator.";
             }
         }
         else 
         {
-            $errors['noID'] = "No Admin specified.";
+            $errors['noID'] = "No user specified.";
         }
         if(sizeof($errors) > 0)
         {

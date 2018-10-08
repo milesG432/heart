@@ -149,8 +149,8 @@ class userController extends Controller
                 return redirect ('/admin');
             }
             else 
-            {                
-                $result = $user->addAdmin($firstName, $lastName, $email, $password);
+            {       
+                $result = $user->addAdmin($firstName, $lastName, $email, $password, $request['accessLevel']);
             }
             
             if(true == $result)
@@ -201,9 +201,10 @@ class userController extends Controller
                 [
                     'id' => $request['id'],
                     'firstname' => $request['firstName'],
-                    'lastname' => $request['lastLame'],
+                    'lastname' => $request['lastName'],
                     'email' => $request['email'], 
-                    'password' => $request['password']
+                    'password' => $request['password'],
+                    'accessLevel' => $request['accessLevel']
                 ];
                 
                 $user = new User();

@@ -84,19 +84,25 @@
                             <!-- First name -->
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="id" id="id" value="">
-                            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="firstName" required="required">
+                            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="firstName" required="required" autocomplete="firstName">
                         </div>
                         <div class="col">
                             <!-- Last name -->
-                            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" name="lastName" required="required">
+                            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" name="lastName" required="required" autocomplete="lastName">
                         </div>
-                    </div>
-
+                    </div
+                    <!-- Accesslevel -->                     
+                        <select class="form-control" id="exampleFormControlSelect1" name="accessLevel" required>
+                            <option value="">-- Access level --</option>
+                            <option value="admin">Admin</option>
+                            <option value="customer">Customer</option>         
+                        </select>
+                     <br>
                     <!-- E-mail -->
-                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email" required="required">
+                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email" required="required" autocomplete="email">
 
                     <!-- Password -->
-                    <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" name="password" required="required">
+                    <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" name="password" required="required" autocomplete="password">
                     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4" required="required">
                         At least 6 characters
                     </small>

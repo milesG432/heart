@@ -11,7 +11,7 @@ function editAdmin(id){
     $.get('/editAdmin?id=' + id, function(data){
         var error = '';
         if(data.length < 1){
-            error = "gone tits up";
+            error = "No user data found. Please contact a site administrator";
         } else {
             var user = $.parseJSON(data);            
             $("#basicExampleModal").modal('show');
@@ -19,6 +19,7 @@ function editAdmin(id){
             $('#defaultRegisterFormFirstName').val(user[0].firstname);
             $('#defaultRegisterFormLastName').val(user[0].surname);
             $('#defaultRegisterFormEmail').val(user[0].email);
+            $('#exampleFormControlSelect1').val(user[0].accessLevel);
             $('#id').val(user[0].id);
             $('#adminForm').attr('action', '/editAdminDetails');
         }
