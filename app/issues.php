@@ -26,7 +26,8 @@ class Issues extends Authenticatable
                 $issues = DB::table('issues')
                         ->join('user', 'issues.userID', '=', 'user.id')
                         ->select('issues.*', 'user.firstname', 'user.surname', 'user.company')
-                        ->get();
+                        ->where('user.id', '=', $userID)
+                        ->get();                
                 if(sizeof($issues) > 0)
                 {
                     return $issues;

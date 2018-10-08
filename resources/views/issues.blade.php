@@ -18,7 +18,11 @@
                 <p>Welcome to the Heart Systems online issue tracker. From here you will be able to report issues to our support team as well as monitor the progress of any existing issues.</p>
             </div>
         </div>
-        
+        @if(Session::get('error'))
+        <div class='alert-success' style='text-align: center'>
+            <h5>You have no reported issues</h5>
+        </div>
+        @endif
         <div class="row">
             <div class="col">
                 <h4>Your Current Issues</h4>

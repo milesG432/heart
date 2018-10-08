@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\Issues;
 use Session;
-use Hash;
+
 
 Class issueController extends controller
 {
@@ -16,19 +15,21 @@ Class issueController extends controller
         {
             $userID = Session::get('id');
             $issues = new Issues();
-            $allIssues = $issues->getIssues($userID);
+            $allIssues = $issues->getIssues($userID);            
             if($allIssues && sizeof($allIssues) > 0)
             {
+                //die("1");
                 return view('issues', ["issues"=>$allIssues]);
             }
             else 
             {
+                //die("2");
                 Session::flash('error', "No issues found for this user.");
-                return redirect('/issues');
+                return view('issues', ["issues"=>$allIssues]);
             }           
         } catch (Exception $ex) {
             Session::flash('error', $ex->getMessage);
-            return redirect('issues');
+            return redirect('/issues');
         }
     }
 }
