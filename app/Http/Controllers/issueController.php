@@ -13,8 +13,11 @@ Class issueController extends controller
     {
         try
         {
+            //set at login
             $userID = Session::get('id');
+            
             $issues = new Issues();
+            //retirive issues based on company user or access level, see model for more details
             $allIssues = $issues->getIssues($userID);            
             if($allIssues && sizeof($allIssues) > 0)
             {                
