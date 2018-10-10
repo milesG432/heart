@@ -17,13 +17,11 @@ Class issueController extends controller
             $issues = new Issues();
             $allIssues = $issues->getIssues($userID);            
             if($allIssues && sizeof($allIssues) > 0)
-            {
-                //die("1");
+            {                
                 return view('issues', ["issues"=>$allIssues]);
             }
             else 
-            {
-                //die("2");
+            {             
                 Session::flash('error', "No issues found for this user.");
                 return view('issues', ["issues"=>$allIssues]);
             }           
