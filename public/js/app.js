@@ -24,8 +24,7 @@ function editAdmin(id){
             $('#defaultRegisterFormCompany').val(user[0].company);
             $('#id').val(user[0].id);
             $('#adminForm').attr('action', '/editAdminDetails');
-        }
-        
+        }        
     });
 }
 

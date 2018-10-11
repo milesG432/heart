@@ -79,4 +79,40 @@ class Issues extends Authenticatable
             return $errors;
         }
     }
+    
+    public function insertIssue($issue)
+    {
+        try
+        {
+            $errors = [
+                
+            ];
+            //validate issue
+            if($issue)
+            {                
+                $reportedDate = date('Y-m-d H:i:s');
+                $result = DB::table('issues')
+                        ->insert(
+                                [
+                                    'userID' => $issue['userID'],
+                                    'product' => $issue['product'],
+                                    'desc' => $issue['description'],
+                                    'status' => 'Queued',
+                                    'reportedDate' => $reportedDate,                                    
+                                ]
+                                );                
+                if(true == $result)
+                {
+                    return true;
+                }
+                else 
+                {
+                    return false;
+                }
+            }
+        } catch (Exception $ex) {
+            $errors['exception'] = $ex->getMessage;
+            return $errors;
+        }
+    }
 }
