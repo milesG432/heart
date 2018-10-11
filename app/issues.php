@@ -115,4 +115,37 @@ class Issues extends Authenticatable
             return $errors;
         }
     }
+    
+    public function editIssue($id)
+    {
+        try
+        {
+            $errors = [
+
+            ];
+            if($id)
+            {
+                $result = DB::select("SELECT * FROM issues WHERE id = '" . $id . "';");
+                if($result && sizeof($result) > 0)
+                {
+                    return $result;
+                }
+                else 
+                {
+                    $errors['Problem retiriving issue. Please contact an administrator'];
+                }
+            }
+            else
+            {
+                $errors['noid'] = "No id supplied to query";
+            }
+            if(sizeof($errors) > 0)
+            {
+                return $errors;
+            }
+        } catch (Exception $ex) {
+            $errors['exception'] = $ex->getMessage;
+            return $errors;
+        }
+    }
 }

@@ -9,11 +9,18 @@ use Session;
 
 Class issueController extends controller
 {
-    public function getIssues()
+    public function getIssues($issueId = null)
     {
         try
         {
-            //set at login
+            if(isset($_GET['id']))
+            {
+                $issueId = $_GET['id'];
+            }
+            
+            if(!$issueId || null == $issueId)
+            {
+                //set at login
             $userID = Session::get('id');
             
             $issues = new Issues();
@@ -28,12 +35,23 @@ Class issueController extends controller
                 Session::flash('error', "No issues found for this user.");
                 return view('issues', ["issues"=>$allIssues]);
             }           
+            }
+            else
+            {
+                $issues = new issues();
+                $issueDetails = $issues->editIssue($issueId);
+                if($issueDetails && sizeof($issueDetails) > 0)
+                {
+                    echo json_encode($issueDetails);
+                }
+            }
+            
         } catch (Exception $ex) {
             Session::flash('error', $ex->getMessage);
             return redirect('/issues');
         }
     }
-    
+            
     public function insertIssue(request $request)
     {
         try

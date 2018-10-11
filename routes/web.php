@@ -52,3 +52,5 @@ route::post('/editAdminDetails', 'userController@insertEdittedAdmin');
 route::get('/issues', 'issueController@getIssues');
 
 Route::post('/createIssue', 'issueController@insertIssue');
+
+Route::get('/editIssue', 'issueController@getIssues');
