@@ -54,3 +54,5 @@ route::get('/issues', 'issueController@getIssues');
 Route::post('/createIssue', 'issueController@insertIssue');
 
 Route::get('/editIssue', 'issueController@getIssues');
+
+Route::post('/insertEdittedIssue', 'issueController@insertEdittedIssue');

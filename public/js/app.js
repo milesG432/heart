@@ -3,6 +3,7 @@
 $(document).ready( function () {
     if(window.location.href.indexOf("/admin") > -1 || window.location.href.indexOf("/issues") > -1){
         $('#adminTable').DataTable();
+        
     }
 });
 
@@ -28,6 +29,7 @@ function editAdmin(id){
     });
 }
 
+//edit existing issues modal and submit to update
 function editIssue(id){
     console.log(id);
     $.get('/editIssue?id=' + id, function(data){
@@ -36,7 +38,18 @@ function editIssue(id){
             error = "There has been a problem fetching this issue. Please contact a site administrator";
         } else {
             var issue = $.parseJSON(data);
-            console.log(data);
+            console.log(issue);      
+            $("#basicExampleModal").modal('show');
+            $('#issueForm').attr('action', '/insertEdittedIssue');
+            $("#exampleModalLabel").text("Edit " + issue[0].product + " issue " );
+            $('#exampleFormControlSelect1').val(issue[0].product);
+            $('#id').val(id);
+            $('#defaultRegisterFormCompany').val(issue[0].desc);                                 
+            $("#basicExampleModal").on("hidden.bs.modal", function () {
+                $('#issueForm')[0].reset();
+                $('#issueForm').attr('action', '/createIssue');
+            });
+            
         }
     });
 }

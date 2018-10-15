@@ -42,7 +42,7 @@
                 </button>                
             </div>
         </div>        
-        <hr>
+        <hr>        
         @if(isset($issues))
         <table id="adminTable" class='table table-hover'>
             <thead>
@@ -95,8 +95,20 @@
                             <option value="Hosted Pulse">Hosted Pulse</option>
                             <option value="PulseStore">PulseStore</option>         
                         </select>
-                     <br>
-                     <textarea id="defaultRegisterFormCompany" class="form-control" placeholder="Issue details" name="issueDescription" required="required"></textarea>
+                     <br>                     
+                         <textarea id="defaultRegisterFormCompany" class="form-control" placeholder="Issue details" name="issueDescription" required="required"></textarea>
+                         <br>
+                    @if(Session::get('level') == 'admin')
+                     <select class="form-control" id="woo" name="status" required="required">
+                            <option value="">-- Issue status --</option>
+                            <option value="admin">Queued</option>
+                            <option value="inprogess">In progress</option>         
+                            <option value="completed">Completed</option>     
+                            <option value="blocked">Blocked</option>
+                        </select>
+                    <br>
+                    
+                     @endif
                      <br>
                     <button class="btn btn-info my-4 btn-block" type="submit">Submit</button>
                     <hr>

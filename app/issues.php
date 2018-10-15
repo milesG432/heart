@@ -148,4 +148,46 @@ class Issues extends Authenticatable
             return $errors;
         }
     }
+    
+    public function inserEdittedIssue($issue)
+    {
+        try
+        {
+            $error = 
+                [
+                'errorsSet' => false
+                ];
+            //if issue from controller ok update issue in database
+            if($issue && sizeof($issue) > 0)
+            {
+                    if('completed' == $issue['status'])
+                    {
+                        $completedDate = date('Y-m-d H:i:s');
+                    } 
+                    else
+                    {
+                        $completedDate = null;
+                    }
+                    $result = DB::table('issues')
+                        ->where('id', $issue['id'])
+                        ->update([
+                            'product' => $issue['product'],
+                            'desc' => $issue['desc'],
+                            'status' => $issue['status'],
+                            'completedDate' => $completedDate
+                        ]);                                   
+                return $result;
+            }
+            else
+            {
+                $error['errorsSet'] = true;
+                $error['update'] = "Record updating has failed. Plesase try again later.";
+                return $error;
+            }            
+        } catch (Exception $ex) {
+            $error['errorsSet'] = true;
+            $error['exception'] = $ex->getMessage;
+            return $error;
+        }
+    }
 }
