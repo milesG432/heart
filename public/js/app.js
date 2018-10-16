@@ -3,7 +3,9 @@
 $(document).ready( function () {
     if(window.location.href.indexOf("/admin") > -1 || window.location.href.indexOf("/issues") > -1){
         $('#adminTable').DataTable();
-        
+        $( "#datepicker" ).datepicker({
+            dateFormat:"yy-mm-dd"
+        });
     }
 });
 
@@ -14,8 +16,7 @@ function editAdmin(id){
         if(data.length < 1){
             error = "No user data found. Please contact a site administrator";
         } else {
-            var user = $.parseJSON(data);            
-            console.log(data);
+            var user = $.parseJSON(data);                        
             $("#basicExampleModal").modal('show');
             $("#exampleModalLabel").text("Edit " + user[0].firstname + " " + user[0].surname);
             $('#defaultRegisterFormFirstName').val(user[0].firstname);
@@ -37,8 +38,7 @@ function editIssue(id){
         if(data.length < 1){
             error = "There has been a problem fetching this issue. Please contact a site administrator";
         } else {
-            var issue = $.parseJSON(data);
-            console.log(issue);      
+            var issue = $.parseJSON(data);            
             $("#basicExampleModal").modal('show');
             $('#issueForm').attr('action', '/insertEdittedIssue');
             $("#exampleModalLabel").text("Edit " + issue[0].product + " issue " );

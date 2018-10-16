@@ -168,14 +168,31 @@ class Issues extends Authenticatable
                     {
                         $completedDate = null;
                     }
-                    $result = DB::table('issues')
+                    //if user not admin editting then status will be null so dont try and update.
+                    if($issue['status'] != null)
+                    {
+                        $result = DB::table('issues')
                         ->where('id', $issue['id'])
                         ->update([
                             'product' => $issue['product'],
                             'desc' => $issue['desc'],
                             'status' => $issue['status'],
-                            'completedDate' => $completedDate
+                            'completedDate' => $completedDate,
+                            'estimatedDate' => $issue['estimate']
                         ]);                                   
+                    } 
+                    else 
+                    {
+                        $result = DB::table('issues')
+                        ->where('id', $issue['id'])
+                        ->update([
+                            'product' => $issue['product'],
+                            'desc' => $issue['desc'],                            
+                            'completedDate' => $completedDate,
+                            'estimatedDate' => $issue['estimate']
+                        ]);                                   
+                    }
+                    
                 return $result;
             }
             else

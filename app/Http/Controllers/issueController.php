@@ -91,7 +91,8 @@ Class issueController extends controller
                         'id'  => $request['id'],
                         'desc' => $request['issueDescription'],
                         'product' => $request['product'],
-                        'status' => $request['status']
+                        'status' => $request['status'],
+                        'estimate' => $request['estimatedDate']
                     ];
                 $editResult = $editIssue->inserEdittedIssue($issue);
                 if(1 == $editResult)
