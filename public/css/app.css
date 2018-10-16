@@ -51,6 +51,11 @@ footer a:hover{
      float:right;
      display:block;
  }
+ 
+ .icon{
+     width: 25px;
+     height:25px;
+ }
 
 footer{
     height: 450px;

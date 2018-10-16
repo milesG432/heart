@@ -56,3 +56,9 @@ Route::post('/createIssue', 'issueController@insertIssue');
 Route::get('/editIssue', 'issueController@getIssues');
 
 Route::post('/insertEdittedIssue', 'issueController@insertEdittedIssue');
+
+Route::get('/wishlist', 'wishlistController@getWishlistItems');
+
+Route::post('/createWishlist', 'wishlistController@addItem');
+
+Route::get('/upvote', 'wishlistController@upvote');

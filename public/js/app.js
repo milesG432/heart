@@ -1,13 +1,27 @@
 
 //admins table
 $(document).ready( function () {
-    if(window.location.href.indexOf("/admin") > -1 || window.location.href.indexOf("/issues") > -1){
+    if(window.location.href.indexOf("/admin") > -1 || window.location.href.indexOf("/issues") > -1 || window.location.href.indexOf("/wishlist") > -1){
         $('#adminTable').DataTable();
         $( "#datepicker" ).datepicker({
             dateFormat:"yy-mm-dd"
         });
     }
 });
+
+function upvote(id){
+    alert(id);
+    $.get('/upvote?id=' + id, function(data){
+       var error = '' ;
+       if(data.length < 1){
+           error = "Oooopsie";
+           console.log(error);
+       } else {
+           var result = $.parseJSON(data);
+           console.log(result);
+       }
+    });
+}
 
 //populate and create edit admin modal
 function editAdmin(id){    

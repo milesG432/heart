@@ -62,7 +62,7 @@
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                  accesskey=""aria-expanded="false">Help</a>
                                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Wishlist</a>
+                                    <a class="dropdown-item" href="/wishlist">Wishlist</a>
                                     <a class="dropdown-item" href="/issues">Issue tracker</a>
                                     <a class="dropdown-item" href="#">Upload area</a>
                                     <a class="dropdown-item" href="#">Wiki</a>
