@@ -62,3 +62,7 @@ Route::get('/wishlist', 'wishlistController@getWishlistItems');
 Route::post('/createWishlist', 'wishlistController@addItem');
 
 Route::get('/upvote', 'wishlistController@upvote');
+
+Route::get('/editWish', 'wishlistController@getWishlistItems');
+
+Route::post('/insertEdittedWish', 'wishListController@insertEdittedWish');

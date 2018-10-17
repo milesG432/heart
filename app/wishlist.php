@@ -12,47 +12,73 @@ use Hash;
 class wishList extends Authenticatable
 {
     use Notifiable;
-    
-    public function getWishlist()
+    //return wishlist items for viewing and votin
+    public function getWishlist($wishId = null)
     {
         try
         {
-            $wishes = DB::table('wishlist')->get();
-            if(sizeof($wishes) > 0)
+            if(null == $wishId || !isset($wishId))//get all wishes for table
             {
-                return $wishes;
+                $wishes = DB::table('wishlist')->get();
+                if(sizeof($wishes) > 0)
+                {
+                    return $wishes;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else//get single wish for editting
+            {
+                $wish = DB::table('wishList')
+                        ->where('id', '=', $wishId)
+                        ->get();
+                if(sizeof($wish) > 0)
+                {
+                    return $wish;
+                }
+                else
+                {
+                    return false;
+                }
+            }            
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+   
+    //check user has not already voted for wish and if ok add vote
+    public function voterCheats($issueID, $userID)
+    {
+        try
+        {            
+            $result = DB::table('vote_tracker')                    
+                    ->where('custId', $userID)
+                    ->where('issueId', $issueID)
+                    ->count();
+            if($result == '0')
+            { 
+                $trackerResult = DB::table('vote_tracker')                        
+                        ->insert([
+                            'custId' => $userID,
+                            'issueID' => $issueID
+                            ]);                            
+                $voteUp = DB::table('wishlist')
+                        ->where('id', $issueID)                        
+                        ->increment('votes');                
+                return $result;
             }
             else
             {
-                return false;
+                return $result;
             }
         } catch (Exception $ex) {
             return false;
         }
     }
     
-    public function voterCheats($issueID, $userID)
-    {
-        try
-        {
-            $result = DB::table('vote_tracker')                    
-                    ->where('custId', $userID)
-                    ->where('issueId', $issueID)
-                    ->count();
-            if($result <= 0)
-            {
-                 
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        } catch (Exception $ex) {
-
-        }
-    }
-    
+    //add to wishlist
     public function addWish($wish)
     {
         try
@@ -83,6 +109,36 @@ class wishList extends Authenticatable
             }
         } catch (Exception $ex) {
             return false;
+        }
+    }
+    
+    public function insertEdittedWish($wish)
+    {
+        try
+        {            
+            if(sizeof($wish))
+            {
+                
+                $result = DB::table('wishlist')
+                        ->where('id', $wish['wishID'])
+                        ->update([
+                            'wish' => $wish['wish'],
+                            'status' => $wish['status'],
+                            'product' => $wish['product'],
+                            'version_including' => $wish['version']
+                        ]); 
+                
+                if(1 == $result)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        } catch (Exception $ex) {
+            //todo handle errors
         }
     }
     

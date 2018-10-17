@@ -1,5 +1,5 @@
 
-//admins table
+//create instances of datatable and datepicker plugins
 $(document).ready( function () {
     if(window.location.href.indexOf("/admin") > -1 || window.location.href.indexOf("/issues") > -1 || window.location.href.indexOf("/wishlist") > -1){
         $('#adminTable').DataTable();
@@ -9,16 +9,17 @@ $(document).ready( function () {
     }
 });
 
-function upvote(id){
-    alert(id);
+//upvoting wishlist items function
+function upvote(id){    
     $.get('/upvote?id=' + id, function(data){
        var error = '' ;
        if(data.length < 1){
            error = "Oooopsie";
            console.log(error);
        } else {
-           var result = $.parseJSON(data);
+           var result = $.parseJSON(data); 
            console.log(result);
+           //window.location.replace('/wishlist');
        }
     });
 }
@@ -40,13 +41,32 @@ function editAdmin(id){
             $('#defaultRegisterFormCompany').val(user[0].company);
             $('#id').val(user[0].id);
             $('#adminForm').attr('action', '/editAdminDetails');
+            //todo clear form
         }        
     });
 }
 
+function editWish(wishid){
+    $.get('/editWish?id=' + wishid, function(data){
+       var error = '';
+       if(data.length < 1){
+           error = "There is a problem fetching this issue. Please try later.";
+       } else {
+           var wish = $.parseJSON(data);
+           console.log(wish);
+           $('#basicExampleModal').modal('show');
+           $('#issueForm').attr('action', '/insertEdittedWish');
+           $('#exampleFormControlSelect1').val(wish[0].product);
+           $('#defaultRegisterFormCompany').val(wish[0].wish);
+           $('#exampleFormControlSelect2').val(wish[0].status);
+           $('#defaultRegisterversion').val(wish[0].version_including);
+           $('#id').val(wish[0].id);
+       }
+    });
+}
+
 //edit existing issues modal and submit to update
-function editIssue(id){
-    console.log(id);
+function editIssue(id){    
     $.get('/editIssue?id=' + id, function(data){
         var error = '';
         if(data.length < 1){

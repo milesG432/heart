@@ -108,7 +108,6 @@
                     </select>
                     <br>
                     <input class='form-control' name='estimatedDate' type="text" id="datepicker" placeholder='Estimated date' autocomplete="off">
-
                     @endif
                     <br>
                     <button class="btn btn-info my-4 btn-block" type="submit">Submit</button>

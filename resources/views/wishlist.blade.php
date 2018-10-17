@@ -50,17 +50,19 @@
                 <th>Wish</th>
                 <th>Status</th>
                 <th>Votes</th> 
-                <th>Upvote</th>
+                <th>Version including wish</th>
+                <th>Upvote</th>                
             </tr>
         
         </thead>
         <tbody>                
             @foreach($wishList as $listItem)
-            <tr>
+            <tr @if(Session::get('level') == 'admin')onclick='editWish({{$listItem->id}})' @endif>
                 <td>{{$listItem->product}}</td>
                 <td>{{$listItem->wish}}</td>
                 <td>{{$listItem->status}}</td>
                 <td>{{$listItem->votes}}</td>
+                <td>{{$listItem->version_including}}</td>
                 <td onclick="upvote({{$listItem->id}})" ><img class="icon" src="/img/icons/thumb-up.svg"></td>
             </tr>
             @endforeach                
@@ -95,9 +97,22 @@
                         <option value="PulseStore">PulseStore</option>         
                     </select>
                     <br>                     
-                    <textarea id="defaultRegisterFormCompany" class="form-control" placeholder="Request details" name="requestDescription" required="required"></textarea>
+                    <textarea id="defaultRegisterFormCompany" class="form-control" placeholder="Wish details" name="requestDescription" required="required"></textarea>
                     <br>                   
                     <br>
+                    @if(Session::get('level') == 'admin')
+                    <select class="form-control" id="exampleFormControlSelect2" name="status" required>
+                        <option value="">-- Status --</option>
+                        <option value="Open">Open for voting</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Denied">Denied</option>         
+                        <option value="In Progress">In Progress</option>
+                        <option value="In Testing">In Testing</option>
+                        <option value="Released">Released</option>
+                    </select>
+                    <br>
+                    <input type="text" id="defaultRegisterversion" class="form-control" placeholder="Version including feature" name="version">
+                    @endif
                     <button class="btn btn-info my-4 btn-block" type="submit">Submit</button>
                     <hr>
                 </form>
