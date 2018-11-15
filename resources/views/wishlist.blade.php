@@ -10,27 +10,27 @@
 
 @else 
 @if( Session::has('error'))
-    <div class="alert alert-danger" style="text-align: center">            
-        <h3>{{Session::get('error')}}</h3>
+<div class="alert alert-danger" style="text-align: center">            
+    <h3>{{Session::get('error')}}</h3>
 
-    </div>
-    @endif
-    @if(Session::has('message'))
-    <div class="alert-success" style="text-align: center">
-        <h3>{{Session::get('message')}}</h3>
-    </div>
-    @endif
-    <div class='container'>
-        <div class="card" id="issuesIntro">
-            <div class="card-title">
-                <h5>Heart Systems wishlist</h5>
-            </div>            
-            <div class="card-text" style='text-align: center'>
-                <p>Welcome to the Heart Systems wishlist. You can view the status of, and add your own wishlist items here, as well as voting for existing wishlist items.</p>                                
-                    <p> ** Items with the most votes will be given priority for scheduling. ** </p>                
-            </div>
+</div>
+@endif
+@if(Session::has('message'))
+<div class="alert-success" style="text-align: center">
+    <h3>{{Session::get('message')}}</h3>
+</div>
+@endif
+<div class='container'>
+    <div class="card" id="issuesIntro">
+        <div class="card-title">
+            <h5>Heart Systems wishlist</h5>
+        </div>            
+        <div class="card-text" style='text-align: center'>
+            <p>Welcome to the Heart Systems wishlist. You can view the status of, and add your own wishlist items here, as well as voting for existing wishlist items.</p>                                
+            <p> ** Items with the most votes will be given priority for scheduling. ** </p>                
         </div>
-        <div class="row">
+    </div>
+    <div class="row">
         <div class="col">
             <h4>Wishlist items</h4>
         </div>
@@ -42,38 +42,43 @@
                 New wishlist item
             </button>                
         </div>
-            @if(isset($wishList))
-    <table id="adminTable" class='table table-hover'>
-        <thead>
-            <tr>
-                <th>Product</th>                    
-                <th>Wish</th>
-                <th>Status</th>
-                <th>Votes</th> 
-                <th>Version including wish</th>
-                <th>Upvote</th>                
-            </tr>
-        
-        </thead>
-        <tbody>                
-            @foreach($wishList as $listItem)
-            <tr @if(Session::get('level') == 'admin')onclick='editWish({{$listItem->id}})' @endif>
-                <td>{{$listItem->product}}</td>
-                <td>{{$listItem->wish}}</td>
-                <td>{{$listItem->status}}</td>
-                <td>{{$listItem->votes}}</td>
-                <td>{{$listItem->version_including}}</td>
-                <td onclick="upvote({{$listItem->id}})" ><img class="icon" src="/img/icons/thumb-up.svg"></td>
-            </tr>
-            @endforeach                
-        </tbody>
-    </table>
-    @endif
+        @if(isset($wishList))
+        <table id="adminTable" class='table @if(Session::get('level') == 'admin')table-hover @endif'>
+               <thead>
+                <tr>
+                    <th>Product</th>                    
+                    <th>Wish</th>
+                    <th>Status</th>
+                    <th>Votes</th> 
+                    <th>Version including wish</th>
+                    @if(Session::get('level') != 'admin')<th>Upvote</th>@endif
+                </tr>
+
+            </thead>
+            <tbody>                
+                @foreach($wishList as $listItem)
+                <tr @if(Session::get('level') == 'admin')onclick='editWish({{$listItem->id}})' @endif>
+                     <td>{{$listItem->product}}</td>
+                    <td>{{$listItem->wish}}</td>
+                    <td>{{$listItem->status}}</td>
+                    <td>{{$listItem->votes}}</td>
+                    <td>{{$listItem->version_including}}</td>
+                    @if(Session::get('level') != 'admin')@if($listItem->status == 'Open')
+                    <td onclick="upvote({{$listItem->id}})" ><img class="icon" src="/img/icons/thumb-up.svg"></td>
+                    @else
+                    <td><img class="icon" src="/img/icons/cog.svg"></td>
+                    @endif
+                    @endif
+                </tr>
+                @endforeach                
+            </tbody>
+        </table>
+        @endif
     </div>        
     <hr>        
-    </div>
-    
-    <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

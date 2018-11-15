@@ -105,6 +105,11 @@ Class issueController extends controller
                     Session::flash('error', $editResult);
                     return redirect('/issues');
                 }
+                else
+                {
+                    Session::flash('error', "Nothing to update");
+                    return redirect('issues');
+                }
             }
             else
             {

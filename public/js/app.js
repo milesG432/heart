@@ -1,37 +1,37 @@
 
 //create instances of datatable and datepicker plugins
-$(document).ready( function () {
-    if(window.location.href.indexOf("/admin") > -1 || window.location.href.indexOf("/issues") > -1 || window.location.href.indexOf("/wishlist") > -1){
+$(document).ready(function () {
+    if (window.location.href.indexOf("/admin") > -1 || window.location.href.indexOf("/issues") > -1 || window.location.href.indexOf("/wishlist") > -1) {
         $('#adminTable').DataTable();
-        $( "#datepicker" ).datepicker({
-            dateFormat:"yy-mm-dd"
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd"
         });
     }
 });
 
 //upvoting wishlist items function
-function upvote(id){    
-    $.get('/upvote?id=' + id, function(data){
-       var error = '' ;
-       if(data.length < 1){
-           error = "Oooopsie";
-           console.log(error);
-       } else {
-           var result = $.parseJSON(data); 
-           console.log(result);
-           //window.location.replace('/wishlist');
-       }
+function upvote(id) {
+    $.get('/upvote?id=' + id, function (data) {
+        var error = '';
+        if (data.length < 1) {
+            error = "Oooopsie";
+            console.log(error);
+        } else {
+            var result = $.parseJSON(data);
+            console.log(result);
+            window.location.replace('/wishlist');
+        }
     });
 }
 
 //populate and create edit admin modal
-function editAdmin(id){    
-    $.get('/editAdmin?id=' + id, function(data){
+function editAdmin(id) {
+    $.get('/editAdmin?id=' + id, function (data) {
         var error = '';
-        if(data.length < 1){
+        if (data.length < 1) {
             error = "No user data found. Please contact a site administrator";
         } else {
-            var user = $.parseJSON(data);                        
+            var user = $.parseJSON(data);
             $("#basicExampleModal").modal('show');
             $("#exampleModalLabel").text("Edit " + user[0].firstname + " " + user[0].surname);
             $('#defaultRegisterFormFirstName').val(user[0].firstname);
@@ -42,48 +42,48 @@ function editAdmin(id){
             $('#id').val(user[0].id);
             $('#adminForm').attr('action', '/editAdminDetails');
             //todo clear form
-        }        
+        }
     });
 }
 
-function editWish(wishid){
-    $.get('/editWish?id=' + wishid, function(data){
-       var error = '';
-       if(data.length < 1){
-           error = "There is a problem fetching this issue. Please try later.";
-       } else {
-           var wish = $.parseJSON(data);
-           console.log(wish);
-           $('#basicExampleModal').modal('show');
-           $('#issueForm').attr('action', '/insertEdittedWish');
-           $('#exampleFormControlSelect1').val(wish[0].product);
-           $('#defaultRegisterFormCompany').val(wish[0].wish);
-           $('#exampleFormControlSelect2').val(wish[0].status);
-           $('#defaultRegisterversion').val(wish[0].version_including);
-           $('#id').val(wish[0].id);
-       }
+function editWish(wishid) {
+    $.get('/editWish?id=' + wishid, function (data) {
+        var error = '';
+        if (data.length < 1) {
+            error = "There is a problem fetching this issue. Please try later.";
+        } else {
+            var wish = $.parseJSON(data);
+            console.log(wish);
+            $('#basicExampleModal').modal('show');
+            $('#issueForm').attr('action', '/insertEdittedWish');
+            $('#exampleFormControlSelect1').val(wish[0].product);
+            $('#defaultRegisterFormCompany').val(wish[0].wish);
+            $('#exampleFormControlSelect2').val(wish[0].status);
+            $('#defaultRegisterversion').val(wish[0].version_including);
+            $('#id').val(wish[0].id);
+        }
     });
 }
 
 //edit existing issues modal and submit to update
-function editIssue(id){    
-    $.get('/editIssue?id=' + id, function(data){
+function editIssue(id) {
+    $.get('/editIssue?id=' + id, function (data) {
         var error = '';
-        if(data.length < 1){
+        if (data.length < 1) {
             error = "There has been a problem fetching this issue. Please contact a site administrator";
         } else {
-            var issue = $.parseJSON(data);            
+            var issue = $.parseJSON(data);
             $("#basicExampleModal").modal('show');
             $('#issueForm').attr('action', '/insertEdittedIssue');
-            $("#exampleModalLabel").text("Edit " + issue[0].product + " issue " );
+            $("#exampleModalLabel").text("Edit " + issue[0].product + " issue ");
             $('#exampleFormControlSelect1').val(issue[0].product);
             $('#id').val(id);
-            $('#defaultRegisterFormCompany').val(issue[0].desc);                                 
+            $('#defaultRegisterFormCompany').val(issue[0].desc);
             $("#basicExampleModal").on("hidden.bs.modal", function () {
                 $('#issueForm')[0].reset();
                 $('#issueForm').attr('action', '/createIssue');
             });
-            
+
         }
     });
 }
