@@ -65,7 +65,7 @@
                                     <a class="dropdown-item" href="/wishlist">Wishlist</a>
                                     <a class="dropdown-item" href="/issues">Issue tracker</a>
                                     <a class="dropdown-item" href="#">Upload area</a>
-                                    <a class="dropdown-item" href="#">Wiki</a>
+                                    <a class="dropdown-item" href="/wiki">Wiki</a>
                                     @if(Session::get('loggedIn') && Session::get('level') !== 'customer')
                                     <hr>
                                     <a class="dropdown-item" href="/admin">Site admin</a>

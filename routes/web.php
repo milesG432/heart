@@ -35,6 +35,10 @@ Route::get('/news', function() {
     return view('news');
 });
 
+Route::get('/wiki', function(){
+    return view('wiki');
+});
+
 Route::post('/authenticate', 'userController@logIn');
 
 Route::get('/logout', 'userController@logOut');

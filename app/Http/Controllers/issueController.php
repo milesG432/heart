@@ -24,7 +24,7 @@ Class issueController extends controller
                 $userID = Session::get('id');
 
                 $issues = new Issues();
-                //retirive issues based on company user or access level, see model for more details
+                //retrieve issues based on company user or access level, see model for more details
                 $allIssues = $issues->getIssues($userID);            
                 if($allIssues && sizeof($allIssues) > 0)
                 {                
@@ -70,7 +70,7 @@ Class issueController extends controller
             }
             else
             {
-                Session::flash('error', 'There has been a problem submitting your issue. Please try again or caontact Heart Systems on 01568 617600');
+                Session::flash('error', 'There has been a problem submitting your issue. Please try again or contact Heart Systems on 01568 617600');
                 return redirect('/issues');
             }
         } catch (Exception $ex) {
