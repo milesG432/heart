@@ -9,6 +9,7 @@ $(document).ready(function () {
     }
 });
 
+
 //upvoting wishlist items function
 function upvote(id) {
     $.get('/upvote?id=' + id, function (data) {
