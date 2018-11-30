@@ -95,6 +95,17 @@ footer hr {
 
 }
 
+#cardImg{
+    margin-top:15px;
+    max-height:286px;
+}
+
+#testimonial{
+    background-color:#F2AA4D;
+    border:1 px solid white;
+    border-radius: 10px;
+}
+
 #browseButton {     
     padding: 12.5px;
     border-radius: 7.5px;
