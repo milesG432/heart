@@ -43,6 +43,14 @@ footer a:hover{
     width: 140px;
 }
 
+#cardButtons{
+    background-color: #f2aa4d;
+    padding: 5px;
+    border-radius: 7.5px;
+    color: #3d4049;
+    width: 140px;
+}
+
 #linkButton a{
     text-decoration:none;
 }
@@ -86,7 +94,7 @@ footer hr {
 
 #topBlock{
     height: 40em;
-    background-image: url("/img/apple-devices-books-business-572056.jpg");
+    background-image: url("/img/top.jpg");
 }
 
 #pulseStoreTopBlock{
