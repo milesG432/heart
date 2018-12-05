@@ -21,9 +21,7 @@
         </div>
     </div>
 </div>    
-
 <div class="container">
-
     <br>
     <div class="row">
         <div class="col-sm-12 col-lg-3">
@@ -69,54 +67,49 @@
     <br>    
     <div class="card">
         <div class="card-header" style="text-align:center;background-color: #3D4049; color: #f2aa4d">
-      <h2>Testimonials</h2>    
-  </div>
-  <div class="card-body">  
-      <blockquote><h4><i>Dont just take our word for it, take the word of satisfied users....</i></h4></blockquote>
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="jumbotron" id="testimonial">
-                        <h3 class="display-4">Initial quote</h3>                    
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Decathlon champion tom selleck nigel mansell albert einstein man markings, tom selleck nigel mansell hungarian chevron cripes village people albert einstein man markings dali dolor sit amet chevron decathlon champion.
-                        Sergeant major ian botham lady magnets hair trimmer? D’artagnan dolor ipsum boxing champion class definer funny walk tudor philosopher blue oyster bar challenge you to a duel.</p>
-                        <hr>
-                        <p><i>John Marston</i></p>
-                        <strong><i>Western Stationery</i></strong>
+            <h2>Testimonials</h2>    
+        </div>
+        <div class="card-body">  
+            <blockquote><h4><i>Dont just take our word for it, take the word of satisfied users....</i></h4></blockquote>
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="jumbotron" id="testimonial">
+                            <h3 class="display-4">Initial quote</h3>                    
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Decathlon champion tom selleck nigel mansell albert einstein man markings, tom selleck nigel mansell hungarian chevron cripes village people albert einstein man markings dali dolor sit amet chevron decathlon champion.
+                                Sergeant major ian botham lady magnets hair trimmer? D’artagnan dolor ipsum boxing champion class definer funny walk tudor philosopher blue oyster bar challenge you to a duel.</p>
+                            <hr>
+                            <p><i>John Marston</i></p>
+                            <strong><i>Western Stationery</i></strong>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="jumbotron" id="testimonial">
-                        <h3 class="display-4">Dogs R us!!</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Decathlon champion tom selleck nigel mansell albert einstein man markings, tom selleck nigel mansell hungarian chevron cripes village people albert einstein man markings dali dolor sit amet chevron decathlon champion.
-                        Sergeant major ian botham lady magnets hair trimmer? D’artagnan dolor ipsum boxing champion class definer funny walk tudor philosopher blue oyster bar challenge you to a duel.</p>
-                        <hr>
-                        <p><i>Alex Murphy</i></p>
-                        <strong><i>Robocop academy</i></strong>
+                    <div class="carousel-item">
+                        <div class="jumbotron" id="testimonial">
+                            <h3 class="display-4">Dogs R us!!</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Decathlon champion tom selleck nigel mansell albert einstein man markings, tom selleck nigel mansell hungarian chevron cripes village people albert einstein man markings dali dolor sit amet chevron decathlon champion.
+                                Sergeant major ian botham lady magnets hair trimmer? D’artagnan dolor ipsum boxing champion class definer funny walk tudor philosopher blue oyster bar challenge you to a duel.</p>
+                            <hr>
+                            <p><i>Alex Murphy</i></p>
+                            <strong><i>Robocop academy</i></strong>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="jumbotron" id="testimonial">
-                        <h3 class="display-4">Gav is awesome</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Decathlon champion tom selleck nigel mansell albert einstein man markings, tom selleck nigel mansell hungarian chevron cripes village people albert einstein man markings dali dolor sit amet chevron decathlon champion.
-                        Sergeant major ian botham lady magnets hair trimmer? D’artagnan dolor ipsum boxing champion class definer funny walk tudor philosopher blue oyster bar challenge you to a duel.</p>
-                        <hr>
-                        <p><i>Mike Tyson</i></p>
-                        <strong><i>Peace and love Ltd</i></strong>
+                    <div class="carousel-item">
+                        <div class="jumbotron" id="testimonial">
+                            <h3 class="display-4">Gav is awesome</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Decathlon champion tom selleck nigel mansell albert einstein man markings, tom selleck nigel mansell hungarian chevron cripes village people albert einstein man markings dali dolor sit amet chevron decathlon champion.
+                                Sergeant major ian botham lady magnets hair trimmer? D’artagnan dolor ipsum boxing champion class definer funny walk tudor philosopher blue oyster bar challenge you to a duel.</p>
+                            <hr>
+                            <p><i>Mike Tyson</i></p>
+                            <strong><i>Peace and love Ltd</i></strong>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-        
-    </div>
-
-
-<div class="container">
+    </div>    
     <div class="row" id="middleHome">
         <div class="col-lg-3">
             <div class="view overlay">
@@ -166,7 +159,10 @@
             </div>
         </div>
     </div>
+
 </div>
+
+
 
 @endsection
 

@@ -70,3 +70,5 @@ Route::get('/upvote', 'wishlistController@upvote');
 Route::get('/editWish', 'wishlistController@getWishlistItems');
 
 Route::post('/insertEdittedWish', 'wishListController@insertEdittedWish');
+
+Route::post('/createWiki', 'wikiController@createWiki');

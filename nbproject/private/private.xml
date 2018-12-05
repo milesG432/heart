@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/wamp64/www/proj/app/Http/Controllers/wikiController.php</file>
+            <file>file:/C:/wamp64/www/proj/app/wiki.php</file>
             <file>file:/C:/wamp64/www/proj/routes/web.php</file>
             <file>file:/C:/wamp64/www/proj/app/Http/Controllers/issueController.php</file>
             <file>file:/C:/wamp64/www/proj/public/js/app.js</file>
             <file>file:/C:/wamp64/www/proj/app/issues.php</file>
-            <file>file:/C:/wamp64/www/proj/resources/views/welcome.blade.php</file>
             <file>file:/C:/wamp64/www/proj/resources/views/layouts/app.blade.php</file>
             <file>file:/C:/wamp64/www/proj/public/css/app.css</file>
+            <file>file:/C:/wamp64/www/proj/resources/views/wiki.blade.php</file>
+            <file>file:/C:/wamp64/www/proj/resources/views/wishlist.blade.php</file>
         </group>
     </open-files>
 </project-private>

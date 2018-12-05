@@ -50,31 +50,21 @@
             </div>
             <div class="modal-body">
                 <!-- new admin form  -->
-                <form class="text-center border border-light p-5" method="post" action="/createIssue" id="issueForm">
+                <form class="text-center border border-light p-5" method="post" action="/createWiki" id="WikiForm">
                     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4" required="required">
-                        Please use this form to report issues. Once the issue has moved from a status of Queued to In progress it will be given an estimated completion date.
+                        Use this form to add new Wiki entries
                     </small>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="id" id="id" value="{{Session::get('id')}}">                                                                        
-                    <select class="form-control" id="exampleFormControlSelect1" name="product" required>
-                        <option value="">-- Product --</option>
-                        <option value="PulseOffice">PulseOffice</option>
-                        <option value="Hosted Pulse">Hosted Pulse</option>
-                        <option value="PulseStore">PulseStore</option>         
-                    </select>
+                    <input type="hidden" name="id" id="id" value="{{Session::get('id')}}">
+                    <textarea id="defaultRegisterFormCompany" class="form-control" placeholder="Article Title" name="wikiTitle" required="required"></textarea>
+                    <br>
+                    <textarea id="defaultRegisterFormCompany" class="form-control" placeholder="Article Intro" name="wikiIntro" required="required"></textarea>
                     <br>                     
-                    <textarea id="defaultRegisterFormCompany" class="form-control" placeholder="Issue details" name="issueDescription" required="required"></textarea>
+                    <textarea id="defaultRegisterFormCompany" class="form-control" placeholder="Article text" name="wikiText" required="required"></textarea>
                     <br>
                     @if(Session::get('level') == 'admin')
-                    <select class="form-control" id="woo" name="status" required="required">
-                        <option value="">-- Issue status --</option>
-                        <option value="Queued">Queued</option>
-                        <option value="In Progess">In progress</option>         
-                        <option value="Completed">Completed</option>     
-                        <option value="Blocked">Blocked</option>
-                    </select>
-                    <br>
-                    <input class='form-control' name='estimatedDate' type="text" id="datepicker" placeholder='Estimated date' autocomplete="off">
+                    <p class="btn btn-danger" onclick="deleteWiki();">DELETE WIKI ENTRY</p>
+                    <br>                    
                     @endif
                     <br>
                     <button class="btn btn-info my-4 btn-block" type="submit">Submit</button>
